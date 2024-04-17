@@ -1,14 +1,14 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    id("com.android.application") version "8.3.2"
+    // Other plugins...
 }
-
 android {
     namespace = "com.group8.rakkiibookstoreapp"
     compileSdk = 34
 
     defaultConfig {
         applicationId = "com.group8.rakkiibookstoreapp"
-        minSdk = 28
+        minSdk = 27
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
