@@ -7,29 +7,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    tools:context=".ProductListActivity"
     tools:ignore="MissingClass">
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/adsBanner"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:src="@drawable/pagebkg"
+        android:src="@drawable/top_banner"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/rounded_corner"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="18dp"/>
     <TextView
         android:id="@+id/txtCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="28sp"
         android:text="Category"
-        android:textColor="@color/black"
+        android:textColor="@color/purple_Dark"
         android:textStyle="bold"/>
-    <ListView
-        android:id="@+id/lvBooks"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="18dp"/>
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBooks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:clipToPadding="false"
+            />
+    </ScrollView>
 
 
 </LinearLayout>

@@ -22,7 +22,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getBundles();
+        getBundles(); //ông include thêm func dành cho BookList object dc ko á
     }
 
     private void getBundles() {

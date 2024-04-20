@@ -8,7 +8,7 @@
     android:backgroundTint="#79F3F3F3">
 
     <ImageView
-        android:id="@+id/imvThumb"
+        android:id="@+id/imvProduct"
         android:layout_width="130dp"
         android:layout_height="120dp"
         android:layout_marginStart="12dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtName"
+        android:id="@+id/txtTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -30,9 +30,33 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/imvThumb"
+        app:layout_constraintStart_toEndOf="@id/imvProduct"
         app:layout_constraintEnd_toEndOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/baseline_star_24"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toEndOf="@id/imvProduct"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"/>
+
+    <TextView
+        android:id="@+id/txtScore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="4.00"
+        android:textColor="@color/purple_Dark"
+        android:textStyle="bold"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/star"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle" />
 
     <TextView
         android:id="@+id/txtCategory"
@@ -41,9 +65,9 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="Tac pham van hoc"
-        app:layout_constraintStart_toEndOf="@id/imvThumb"
+        app:layout_constraintStart_toEndOf="@id/imvProduct"
         app:layout_constraintEnd_toEndOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/txtName" />
+        app:layout_constraintTop_toBottomOf="@id/txtScore" />
 
     <TextView
         android:id="@+id/txtPrice"
@@ -56,7 +80,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imvThumb" />
+        app:layout_constraintStart_toEndOf="@id/imvProduct" />
 
     <Button
         android:id="@+id/btnAddToCart"
@@ -84,7 +108,7 @@
         android:background="@drawable/rounded_tag"
         android:backgroundTint="#D84315"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/imvThumb"
+        app:layout_constraintEnd_toEndOf="@id/imvProduct"
         />
     <Button
         android:id="@+id/btnLike"
@@ -104,7 +128,7 @@
         app:iconPadding="0dp"
         app:iconTint="#737373"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/imvThumb" />
+        app:layout_constraintEnd_toEndOf="@id/imvProduct" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
