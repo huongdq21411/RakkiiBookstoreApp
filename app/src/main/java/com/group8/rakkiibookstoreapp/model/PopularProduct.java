@@ -1,6 +1,8 @@
 package com.group8.rakkiibookstoreapp.model;
 
-public class PopularProduct {
+import java.io.Serializable;
+
+public class PopularProduct implements Serializable {
     private String title;
     private String picUrl;
     private int review;
