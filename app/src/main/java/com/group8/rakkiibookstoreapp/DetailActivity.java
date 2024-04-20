@@ -27,8 +27,8 @@ public class DetailActivity extends AppCompatActivity {
 
     private void getBundles() {
         PopularProduct object = (PopularProduct) getIntent().getSerializableExtra("object");
-        assert object != null;
-        int drawableResourceId = this.getResources().getIdentifier(object.getPicUrl(), "drawable/item_9", this.getPackageName());
+
+        int drawableResourceId = this.getResources().getIdentifier(object.getPicUrl(), "drawable", this.getPackageName());
         Glide.with(this)
 
                 .load(drawableResourceId)
@@ -37,7 +37,7 @@ public class DetailActivity extends AppCompatActivity {
 
         binding.txtTitle.setText(object.getTitle());
 
-        binding.txtPrice.setText(String.valueOf((int) object.getPrice()) + " Đ");
+        binding.txtPrice.setText(String.valueOf((int) object.getPrice()) + " đ");
 
         binding.txtDescription.setText(object.getDescription());
 
