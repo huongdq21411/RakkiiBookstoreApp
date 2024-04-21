@@ -89,4 +89,5 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
         public Viewholder(ViewholderCartBinding binding) { super(binding.getRoot());
         }
     }
+
 }
