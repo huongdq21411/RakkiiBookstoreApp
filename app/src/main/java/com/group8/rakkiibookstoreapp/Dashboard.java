@@ -1,22 +1,16 @@
 package com.group8.rakkiibookstoreapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.group8.rakkiibookstoreapp.adapter.PopularProductAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
-import com.group8.rakkiibookstoreapp.databinding.ActivityLoginBinding;
 import com.group8.rakkiibookstoreapp.model.PopularProduct;
 
 import java.util.ArrayList;
@@ -40,9 +34,16 @@ public class Dashboard extends AppCompatActivity {
 
         statusBarColor();
         initRecyclerView();
+        bottomNavigation();
+    }
 
-
-        addEvents();
+    private void bottomNavigation() {
+        binding.btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, CartActivity.class));
+            }
+        });
     }
 
     private void statusBarColor() {
@@ -62,37 +63,5 @@ public class Dashboard extends AppCompatActivity {
         binding.rvPopular.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL,false));
         binding.rvPopular.setAdapter(new PopularProductAdapter(items));
-    }
-
-
-
-
-    private void addEvents() {
-        ProductListActivity productListActivity = new ProductListActivity();
-        binding.imvCat1.setOnClickListener(v -> {
-            productListActivity.createList("cat1");
-            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
-            startActivity(intent);
-        });
-        binding.imvCat2.setOnClickListener(v -> {
-            productListActivity.createList("cat2");
-            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
-            startActivity(intent);
-        });
-        binding.imvCat3.setOnClickListener(v -> {
-            productListActivity.createList("cat3");
-            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
-            startActivity(intent);
-        });
-        binding.imvCat4.setOnClickListener(v -> {
-            productListActivity.createList("cat4");
-            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
-            startActivity(intent);
-        });
-        binding.imvCat5.setOnClickListener(v -> {
-            productListActivity.createList("cat5");
-            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
-            startActivity(intent);
-        });
     }
 }

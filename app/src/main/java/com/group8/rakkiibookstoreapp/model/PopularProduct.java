@@ -7,7 +7,7 @@ public class PopularProduct implements Serializable {
     private String picUrl;
     private int review;
     private double score;
-    private int numberInChart;
+    private int numberInCart;
     private double price;
     private String description;
 
@@ -61,12 +61,12 @@ public class PopularProduct implements Serializable {
         this.score = score;
     }
 
-    public int getNumberInChart() {
-        return numberInChart;
+    public int getNumberInCart() {
+        return numberInCart;
     }
 
-    public void setNumberInChart(int numberInChart) {
-        this.numberInChart = numberInChart;
+    public void setNumberInCart(int numberInCart) {
+        this.numberInCart = numberInCart;
     }
 
     public double getPrice() {
