@@ -1,5 +1,6 @@
 package com.group8.rakkiibookstoreapp.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -37,10 +38,12 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PopularProductAdapter.Viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull PopularProductAdapter.Viewholder holder, @SuppressLint(
+            "RecyclerView") int position) {
         binding.txtTitle.setText(items.get(position).getTitle());
         binding.txtPrice.setText(items.get(position).getPrice() + "đ");
         binding.txtScore.setText(items.get(position).getScore() + "");
+        binding.txtReview.setText(items.get(position).getReview() + "");
 
         int drawableResourced =
                 holder.itemView.getResources().getIdentifier(items.get(position).getPicUrl(),

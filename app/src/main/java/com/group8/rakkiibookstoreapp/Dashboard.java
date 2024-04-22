@@ -5,14 +5,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.group8.rakkiibookstoreapp.adapter.PopularProductAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
 import com.group8.rakkiibookstoreapp.model.PopularProduct;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Dashboard extends AppCompatActivity {
@@ -24,13 +29,6 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        EdgeToEdge.enable(this);
-//        setContentView(R.layout.activity_dashboard);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
 
         statusBarColor();
         initRecyclerView();
