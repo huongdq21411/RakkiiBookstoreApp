@@ -32,7 +32,7 @@ public class DetailActivity extends AppCompatActivity {
 
         binding.txtTitle.setText(object.getTitle());
 
-        binding.txtPrice.setText(String.valueOf((int) object.getPrice()) + " đ");
+        binding.txtPrice.setText(object.getPrice() + " đ");
 
         binding.txtDescription.setText(object.getDescription());
 
