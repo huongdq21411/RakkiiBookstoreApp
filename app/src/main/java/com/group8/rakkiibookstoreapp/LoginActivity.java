@@ -60,9 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateUsername() | !validatePassword()) {
-
-                } else {
+                if (!(!validateUsername() | !validatePassword())) {
                     checkUser();
                 }
             }
@@ -114,6 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                     loginUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
+                    assert passwordFromDB != null;
                     if (passwordFromDB.equals(userPassword)){
                         loginUsername.setError(null);
 
