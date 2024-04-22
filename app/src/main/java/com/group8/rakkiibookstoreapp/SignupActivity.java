@@ -16,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
+import com.group8.rakkiibookstoreapp.databinding.ActivitySignupBinding;
 
 public class SignupActivity extends AppCompatActivity {
     EditText signupName, signupEmail, signupUsername, signupPassword;
@@ -27,13 +29,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         signupName = findViewById(R.id.signup_name);
         signupEmail = findViewById(R.id.signup_email);
@@ -70,7 +66,6 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
     }
 }

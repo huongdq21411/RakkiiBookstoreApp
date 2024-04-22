@@ -2,7 +2,9 @@ package com.group8.rakkiibookstoreapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
@@ -20,23 +23,34 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
+import com.group8.rakkiibookstoreapp.databinding.ActivityLoginBinding;
+
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView signupRedirectText;
+    boolean isReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        View content = findViewById(android.R.id.content);
+        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
+            @Override
+            public void onDraw() {
+                if (isReady){
+                    content.getViewTreeObserver().removeOnDrawListener(this);
+                }
+                dismissSplashScreen();
+            }
+
         });
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
@@ -46,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateUsername() | !validatePassword()){
+                if (!validateUsername() | !validatePassword()) {
 
                 } else {
                     checkUser();
@@ -117,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                         intent.putExtra("password", passwordFromDB);
 
                         startActivity(intent);
+
                     } else {
                         loginPassword.setError("Invalid Credentials");
                         loginPassword.requestFocus();
@@ -132,5 +147,13 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void dismissSplashScreen() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                isReady = true;
+            }
+        }, 3000);
     }
 }

@@ -2,7 +2,9 @@ package com.group8.rakkiibookstoreapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +21,7 @@ import com.group8.rakkiibookstoreapp.model.PopularProduct;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import androidx.core.splashscreen.SplashScreen;
 
 public class Dashboard extends AppCompatActivity {
 
