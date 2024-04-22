@@ -9,13 +9,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="90dp">
+            android:paddingBottom="80dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,7 +97,7 @@
                     android:drawableStart="@drawable/search_icon"
                     android:drawablePadding="8dp"
                     android:ems="10"
-                    android:hint="Tìm kếm..."
+                    android:hint="Tìm kiếm..."
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#9aa2aa"
@@ -173,11 +175,10 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imvCat5"
+                        android:id="@+id/imvCat1"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-
-                        app:srcCompat="@drawable/cat5" />
+                        app:srcCompat="@drawable/cat1"/>
 
                     <TextView
                         android:id="@+id/txtCat5"
@@ -186,30 +187,8 @@
                         android:layout_marginTop="8dp"
                         android:text="Sách Văn Học"
                         android:textAlignment="center"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imvCat1"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-
-                        app:srcCompat="@drawable/cat1" />
-
-                    <TextView
-                        android:id="@+id/txtCat1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Sách Văn Học"
-                        android:textAlignment="center"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -222,17 +201,17 @@
                         android:id="@+id/imvCat2"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-
                         app:srcCompat="@drawable/cat2" />
 
                     <TextView
-                        android:id="@+id/txtCat2"
+                        android:id="@+id/txtCat1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Sách Kinh Tế"
                         android:textAlignment="center"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -245,17 +224,17 @@
                         android:id="@+id/imvCat3"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-
                         app:srcCompat="@drawable/cat3" />
 
                     <TextView
-                        android:id="@+id/txtCat3"
+                        android:id="@+id/txtCat2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Sách Tâm Lý - Kỹ Năng"
                         android:textAlignment="center"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -268,17 +247,40 @@
                         android:id="@+id/imvCat4"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-
                         app:srcCompat="@drawable/cat4" />
+
+                    <TextView
+                        android:id="@+id/txtCat3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Sách Thiếu Nhi"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imvCat5"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        app:srcCompat="@drawable/cat5" />
 
                     <TextView
                         android:id="@+id/txtCat4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Sách Thiếu Nhi"
+                        android:text="Sách Giáo Khoa"
                         android:textAlignment="center"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -301,7 +303,8 @@
                         android:layout_marginTop="8dp"
                         android:text="Xem tất cả"
                         android:textAlignment="center"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -358,11 +361,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@drawable/edittext_background"
+            android:background="@drawable/purple_background"
             android:padding="4dp"
+            app:fabCradleMargin="8dp"
             app:fabCradleRoundedCornerRadius="50dp"
-            app:fabCradleVerticalOffset="6dp"
-            app:fabCradleMargin="8dp">
+            app:fabCradleVerticalOffset="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -379,7 +382,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        tools:src="@drawable/btn_1" />
+                        android:src="@drawable/btn_1" />
 
                     <TextView
                         android:id="@+id/txtExplorer"
@@ -387,7 +390,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Khám phá"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -401,7 +405,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        tools:src="@drawable/btn_2" />
+                        android:src="@drawable/btn_2" />
 
                     <TextView
                         android:id="@+id/txtWishlist"
@@ -409,7 +413,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Yêu thích"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -423,7 +428,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        tools:src="@drawable/btn_1" />
+                        android:src="@drawable/btn_1" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -434,6 +439,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/btnCart"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -444,7 +450,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        tools:src="@drawable/btn_3" />
+                        android:src="@drawable/btn_3" />
 
                     <TextView
                         android:id="@+id/txtCart"
@@ -452,7 +458,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Giỏ hàng"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -466,7 +473,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        tools:src="@drawable/btn_4" />
+                        android:src="@drawable/btn_4" />
 
                     <TextView
                         android:id="@+id/txtProfile"
@@ -474,7 +481,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Hồ sơ"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.bottomappbar.BottomAppBar>
@@ -484,7 +492,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/qrcode"
             app:backgroundTint="@color/purple_Dark"
-            app:layout_anchor="@id/appBar"
+            app:layout_anchor="@+id/appBar"
+            app:layout_anchorGravity="top|center"
             app:maxImageSize="30dp"
             app:tint="@color/white" />
 

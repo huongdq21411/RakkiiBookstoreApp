@@ -1,6 +1,8 @@
 package com.group8.rakkiibookstoreapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 
 import androidx.activity.EdgeToEdge;
@@ -13,9 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.group8.rakkiibookstoreapp.adapter.PopularProductAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
-import com.group8.rakkiibookstoreapp.databinding.ActivityLoginBinding;
 import com.group8.rakkiibookstoreapp.model.PopularProduct;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Dashboard extends AppCompatActivity {
@@ -27,16 +29,20 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        EdgeToEdge.enable(this);
-//        setContentView(R.layout.activity_dashboard);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
 
         statusBarColor();
         initRecyclerView();
+        addEvents();
+        bottomNavigation();
+    }
+
+    private void bottomNavigation() {
+        binding.btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, CartActivity.class));
+            }
+        });
     }
 
     private void statusBarColor() {
@@ -56,5 +62,43 @@ public class Dashboard extends AppCompatActivity {
         binding.rvPopular.setLayoutManager(new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL,false));
         binding.rvPopular.setAdapter(new PopularProductAdapter(items));
+    }
+
+    private void addEvents() {
+        binding.imvCat1.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat1");
+            startActivity(intent);
+        });
+        binding.imvCat2.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat2");
+            startActivity(intent);
+        });
+        binding.imvCat3.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat3");
+            startActivity(intent);
+        });
+        binding.imvCat4.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat4");
+            startActivity(intent);
+        });
+        binding.imvCat5.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat5");
+            startActivity(intent);
+        });
+        binding.imvCat6.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "nocat");
+            startActivity(intent);
+        });
+        binding.textView3.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "nocat");
+            startActivity(intent);
+        });
     }
 }

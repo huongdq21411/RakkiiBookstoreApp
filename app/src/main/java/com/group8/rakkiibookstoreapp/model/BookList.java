@@ -2,30 +2,24 @@ package com.group8.rakkiibookstoreapp.model;
 
 import java.io.Serializable;
 
-public class PopularProduct implements Serializable {
+public class BookList implements Serializable {
+    private int numberInChart;
+    private String category;
     private String title;
     private String picUrl;
     private int review;
     private double score;
-    private int numberInCart;
     private double price;
     private String description;
 
-    public PopularProduct(String title, String picUrl, int review, double score, double price,
-                          String description) {
+    public BookList(int numberInChart, String category, String title, String picUrl, int review, double score, double price, String description) {
+        this.numberInChart = numberInChart;
+        this.category = category;
         this.title = title;
         this.picUrl = picUrl;
         this.review = review;
         this.score = score;
         this.price = price;
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -61,12 +55,12 @@ public class PopularProduct implements Serializable {
         this.score = score;
     }
 
-    public int getNumberInCart() {
-        return numberInCart;
+    public int getNumberInChart() {
+        return numberInChart;
     }
 
-    public void setNumberInCart(int numberInCart) {
-        this.numberInCart = numberInCart;
+    public void setNumberInChart(int numberInChart) {
+        this.numberInChart = numberInChart;
     }
 
     public double getPrice() {
@@ -75,5 +69,21 @@ public class PopularProduct implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

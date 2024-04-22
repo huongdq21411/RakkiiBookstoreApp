@@ -1,6 +1,8 @@
 package com.group8.rakkiibookstoreapp.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
+import com.group8.rakkiibookstoreapp.DetailActivity;
 import com.group8.rakkiibookstoreapp.databinding.ViewholderPupListBinding;
 import com.group8.rakkiibookstoreapp.model.PopularProduct;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAdapter.Viewholder> {
@@ -35,10 +39,17 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PopularProductAdapter.Viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull PopularProductAdapter.Viewholder holder, @SuppressLint(
+            "RecyclerView") int position) {
         binding.txtTitle.setText(items.get(position).getTitle());
-        binding.txtPrice.setText(items.get(position).getPrice() + "đ");
+        //format lại giá ở dạng: 100,000 đ
+        double price = items.get(position).getPrice();
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        String formattedPrice = decimalFormat.format(price);
+        binding.txtPrice.setText(formattedPrice + " đ");
+        //binding.txtPrice.setText(items.get(position).getPrice() + "đ");
         binding.txtScore.setText(items.get(position).getScore() + "");
+        binding.txtReview.setText(items.get(position).getReview() + "");
 
         int drawableResourced =
                 holder.itemView.getResources().getIdentifier(items.get(position).getPicUrl(),
@@ -52,6 +63,9 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("object", items.get(position));
+                context.startActivity(intent);
 
             }
         });

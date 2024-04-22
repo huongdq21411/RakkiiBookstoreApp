@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "826352375595",
-    "project_id": "rakkiibookstoreapp",
-    "storage_bucket": "rakkiibookstoreapp.appspot.com"
+    "project_number": "60213048452",
+    "project_id": "quiz-c671c",
+    "storage_bucket": "quiz-c671c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:826352375595:android:45269b2d2bcdd08894576e",
+        "mobilesdk_app_id": "1:60213048452:android:a0297236f4c3efa838fed1",
         "android_client_info": {
           "package_name": "com.group8.rakkiibookstoreapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBRj2Yz_6bJBjHPoXYdWR552kY6ObkRGDk"
+          "current_key": "AIzaSyDj5BNGQ37NCKAnOe1981gIkyl8wqoK3GA"
         }
       ],
       "services": {

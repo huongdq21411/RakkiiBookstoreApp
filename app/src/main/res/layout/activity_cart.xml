@@ -7,7 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".CartActivity">
 
+    <TextView
+        android:id="@+id/txtEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your cart is empty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +65,7 @@
                 android:id="@+id/rcvCart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -305,10 +317,10 @@
                 android:id="@+id/btnOrderNow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OrderNow"
-                android:textSize="16sp"
+                android:layout_marginTop="15dp"
                 android:backgroundTint="#2196F3"
-                android:layout_marginTop="15dp"/>
+                android:text="OrderNow"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </ScrollView>
