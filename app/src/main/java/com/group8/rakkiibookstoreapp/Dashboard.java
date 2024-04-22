@@ -65,30 +65,29 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void addEvents() {
-        ProductListActivity productListActivity = new ProductListActivity();
         binding.imvCat1.setOnClickListener(v -> {
-            productListActivity.createList("cat1");
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat1");
             startActivity(intent);
         });
         binding.imvCat2.setOnClickListener(v -> {
-            productListActivity.createList("cat2");
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat2");
             startActivity(intent);
         });
         binding.imvCat3.setOnClickListener(v -> {
-            productListActivity.createList("cat3");
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat3");
             startActivity(intent);
         });
         binding.imvCat4.setOnClickListener(v -> {
-            productListActivity.createList("cat4");
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat4");
             startActivity(intent);
         });
         binding.imvCat5.setOnClickListener(v -> {
-            productListActivity.createList("cat5");
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "cat5");
             startActivity(intent);
         });
     }
