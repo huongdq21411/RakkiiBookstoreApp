@@ -17,6 +17,7 @@ import com.group8.rakkiibookstoreapp.databinding.ViewholderPupListBinding;
 import com.group8.rakkiibookstoreapp.model.PopularProduct;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAdapter.Viewholder> {
@@ -41,7 +42,12 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
     public void onBindViewHolder(@NonNull PopularProductAdapter.Viewholder holder, @SuppressLint(
             "RecyclerView") int position) {
         binding.txtTitle.setText(items.get(position).getTitle());
-        binding.txtPrice.setText(items.get(position).getPrice() + "đ");
+        //format lại giá ở dạng: 100,000 đ
+        double price = items.get(position).getPrice();
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        String formattedPrice = decimalFormat.format(price);
+        binding.txtPrice.setText(formattedPrice + " đ");
+        //binding.txtPrice.setText(items.get(position).getPrice() + "đ");
         binding.txtScore.setText(items.get(position).getScore() + "");
         binding.txtReview.setText(items.get(position).getReview() + "");
 
