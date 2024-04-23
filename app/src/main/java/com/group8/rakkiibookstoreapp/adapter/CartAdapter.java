@@ -3,7 +3,6 @@ package com.group8.rakkiibookstoreapp.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -42,8 +41,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
     @Override
     public void onBindViewHolder(@NonNull CartAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
         binding.txtTitle.setText(items.get(position).getTitle());
-        binding.txtFeeEachItem.setText("$" + items.get(position).getPrice());
-        binding.txtTotalEachItem.setText("$" + Math.round(items.get(position).getNumberInCart()*items.get(position).getPrice()));
+        binding.txtFeeEachItem.setText("đ" + items.get(position).getPrice());
+        binding.txtTotalEachItem.setText("đ" + Math.round(items.get(position).getNumberInCart()*items.get(position).getPrice()));
         binding.txtNumberItem.setText(String.valueOf(items.get(position).getNumberInCart()));
 
         int drawableResourced = holder.itemView.getResources().getIdentifier(items.get(position).getPicUrl(), "drawable", holder.itemView.getContext().getPackageName());
@@ -53,31 +52,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
                 .transform(new GranularRoundedCorners(30, 30, 0, 0))
                 .into(binding.imvPhoto);
 
-        binding.txtPlusCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                managmentCart.plusNumberItem(items, position, new ChangeNumberItemsListener() {
-                    @Override
-                    public void change() {
-                        notifyDataSetChanged();
-                        changeNumberItemsListener.change();
-                    }
-                });
-            }
-        });
+        binding.txtPlusCart.setOnClickListener(v -> managmentCart.plusNumberItem(items, position, () -> {
+            notifyDataSetChanged();
+            changeNumberItemsListener.change();
+        }));
 
-        binding.txtMinusCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                managmentCart.minusNumberItem(items, position, new ChangeNumberItemsListener() {
-                    @Override
-                    public void change() {
-                        notifyDataSetChanged();
-                        changeNumberItemsListener.change();
-                    }
-                });
-            }
-        });
+        binding.txtMinusCart.setOnClickListener(v -> managmentCart.minusNumberItem(items, position, () -> {
+            notifyDataSetChanged();
+            changeNumberItemsListener.change();
+        }));
     }
 
     @Override

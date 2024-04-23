@@ -67,16 +67,16 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void calculatorCart() {
-        double percentTax = 0.02;
+        double percentTax = 0.01;
         double delivery = 10;
         tax = Math.round(managmentCart.getTotalFee() * percentTax * 100) / 100;
 
         double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100) / 100;
         double itemTotal = Math.round(managmentCart.getTotalFee()*100/100);
-        binding.txtTotalFee.setText("$" + itemTotal);
-        binding.txtTotalTax.setText("$" + tax);
-        binding.txtDelivery.setText("$" + delivery);
-        binding.txtTotal.setText("$" + total);
+        binding.txtTotalFee.setText("đ" + itemTotal);
+        binding.txtTotalTax.setText("đ" + tax);
+        binding.txtDelivery.setText("đ" + delivery);
+        binding.txtTotal.setText("đ" + total);
     }
 
     private void setVariable() {

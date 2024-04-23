@@ -33,6 +33,7 @@ public class ProductListActivity extends AppCompatActivity {
         }
 
         binding.imvBack.setOnClickListener(v -> finish());
+
     }
 
 
@@ -151,4 +152,5 @@ public class ProductListActivity extends AppCompatActivity {
         list5.add(new BookList(49, "Giáo khoa - Tham khảo", "500 Bài Tập Vật Lí Trung Học Cơ Sở", "item_49", 0, 3.5, 92800, "Là tài liệu tham khảo cần thiết cho những học sinh muốn tìm hiểu kĩ về môn khoa học thú vị này. Đây là tài liệu dùng để ôn tập, chuẩn bị cho các kì thi học sinh giỏi, tuyển sinh vào các trường chuyên. Quyển sách là một tài liệu bổ ích cho những học sinh yêu thích môn Vật lí có điều kiện học tập tốt nhất. Đồng thời, cuốn sách có thể giúp các thầy cô giáo có thêm tài liệu bổ sung dùng để bồi dưỡng học sinh."));
         list5.add(new BookList(50, "Giáo khoa - Tham khảo", "25 Đề Đánh Giá Năng Lực Đại Học Quốc Gia Tp. Hồ Chí Minh", "item_50", 1, 3, 188000, "Sách cung cấp kiến thức, phương pháp và kỹ năng làm các dạng bài có trong đề thi ĐGNL. Sách có phần giải chi tiết từng câu hỏi kèm video chữa bài theo mã ID. Đề thi gồm đầy đủ các môn: Tiếng Việt, Tiếng anh, Toán học, Vật lý, Hóa học, Sinh học, Địa lý, Lịch sử, chính trị, xã hội. Số lượng bài tập theo các đề giống với 1 đề thi thật, giúp các bạn làm quen với cấu trúc đề thi ĐGNL. Ngoài ra, sách có cung cấp đáp án các câu hỏi để học sinh thuận tiện đối chiếu và tự chấm điểm."));
     }
+
 }

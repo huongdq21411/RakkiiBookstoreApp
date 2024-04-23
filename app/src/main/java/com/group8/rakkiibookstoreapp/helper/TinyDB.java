@@ -10,8 +10,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-//import com.google.gson.Gson;
-
+import com.google.gson.Gson;
 import com.group8.rakkiibookstoreapp.model.BookList;
 
 import java.io.File;
@@ -307,28 +306,28 @@ public class TinyDB {
 
 
     public ArrayList<BookList> getListObject(String key){
-//        Gson gson = new Gson();
+        Gson gson = new Gson();
 
         ArrayList<String> objStrings = getListString(key);
         ArrayList<BookList> playerList =  new ArrayList<BookList>();
 
         for(String jObjString : objStrings){
-//            PopularProduct player  = gson.fromJson(jObjString,  PopularProduct.class);
-//            playerList.add(player);
+            BookList player  = gson.fromJson(jObjString,  BookList.class);
+            playerList.add(player);
         }
         return playerList;
     }
 
 
 
-//    public <T> T getObject(String key, Class<T> classOfT){
-//
-//        String json = getString(key);
-//        Object value = new Gson().fromJson(json, classOfT);
-//        if (value == null)
-//            throw new NullPointerException();
-//        return (T)value;
-//    }
+    public <T> T getObject(String key, Class<T> classOfT){
+
+        String json = getString(key);
+        Object value = new Gson().fromJson(json, classOfT);
+        if (value == null)
+            throw new NullPointerException();
+        return (T)value;
+    }
 
 
     // Put methods
@@ -464,18 +463,18 @@ public class TinyDB {
      */
     public void putObject(String key, Object obj){
         checkForNullKey(key);
-//        Gson gson = new Gson();
-//        putString(key, gson.toJson(obj));
+        Gson gson = new Gson();
+        putString(key, gson.toJson(obj));
     }
 
     public void putListObject(String key, ArrayList<BookList> playerList){
         checkForNullKey(key);
-//        Gson gson = new Gson();
-//        ArrayList<String> objStrings = new ArrayList<String>();
-//        for(PopularProduct player: playerList){
-//            objStrings.add(gson.toJson(player));
-//        }
-//        putListString(key, objStrings);
+        Gson gson = new Gson();
+        ArrayList<String> objStrings = new ArrayList<String>();
+        for(BookList player: playerList){
+            objStrings.add(gson.toJson(player));
+        }
+        putListString(key, objStrings);
     }
 
     /**
