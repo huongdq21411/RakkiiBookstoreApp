@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/pagebkg"
+    android:background="@color/purple_Dark"
     tools:context=".ProfileActivity">
 
     <ImageView
-        android:id="@+id/profileImg"
+        android:id="@+id/imgProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
@@ -22,28 +22,28 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
+        android:id="@+id/edtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/titleName"
         android:layout_marginTop="10dp"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/profileImg"
-        app:layout_constraintStart_toStartOf="@id/profileImg"
-        app:layout_constraintTop_toBottomOf="@id/profileImg"/>
+        app:layout_constraintEnd_toEndOf="@id/imgProfile"
+        app:layout_constraintStart_toStartOf="@id/imgProfile"
+        app:layout_constraintTop_toBottomOf="@id/imgProfile"/>
 
     <TextView
+        android:id="@+id/edtUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/titleUsername"
         android:text="username"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@id/titleName"
-        app:layout_constraintStart_toStartOf="@id/titleName"
-        app:layout_constraintTop_toBottomOf="@id/titleName"/>
+        app:layout_constraintEnd_toEndOf="@id/edtName"
+        app:layout_constraintStart_toStartOf="@id/edtName"
+        app:layout_constraintTop_toBottomOf="@id/edtName"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleUsername">
+        app:layout_constraintTop_toBottomOf="@id/edtUsername">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/postsNumber"
+                    android:id="@+id/numbPosts"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:gravity="center"
@@ -86,7 +86,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/posts"
+                    android:id="@+id/txtPosts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Posts"
@@ -106,7 +106,7 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/followersNo"
+                    android:id="@+id/numbFollowers"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:gravity="center"
@@ -117,7 +117,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/followers"
+                    android:id="@+id/txtFollowers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Followers"
@@ -137,7 +137,7 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/followingNo"
+                    android:id="@+id/numbFollowing"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:gravity="center"
@@ -148,7 +148,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/following"
+                    android:id="@+id/txtFollowing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Following"
@@ -168,7 +168,7 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -204,7 +204,7 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/email"
+                android:id="@+id/txtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -240,7 +240,7 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/txtUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -276,7 +276,7 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/password"
+                android:id="@+id/txtPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -300,7 +300,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/editButton"
+        android:id="@+id/btnEditProf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

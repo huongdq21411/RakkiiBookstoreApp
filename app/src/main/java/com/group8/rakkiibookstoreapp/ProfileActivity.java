@@ -22,13 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
-import com.group8.rakkiibookstoreapp.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
     TextView profileName, profileEmail, profileUsername, profilePassword;
-    TextView titleName, titleUsername;
-    Button editProfile;
+    TextView edtName, edtUsername;
+    Button btnEditProf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +37,13 @@ public class ProfileActivity extends AppCompatActivity {
         profileEmail = findViewById(R.id.profileEmail);
         profileUsername = findViewById(R.id.profileUsername);
         profilePassword = findViewById(R.id.profilePassword);
-        titleName = findViewById(R.id.titleName);
-        titleUsername = findViewById(R.id.titleUsername);
-        editProfile = findViewById(R.id.editButton);
+        edtName = findViewById(R.id.edtName);
+        edtUsername = findViewById(R.id.edtUsername);
+        btnEditProf = findViewById(R.id.btnEditProf);
 
         showUserData();
 
-        editProfile.setOnClickListener(new View.OnClickListener() {
+        btnEditProf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 passUserData();
@@ -62,8 +60,8 @@ public class ProfileActivity extends AppCompatActivity {
         String usernameUser = intent.getStringExtra("username");
         String passwordUser = intent.getStringExtra("password");
 
-        titleName.setText(nameUser);
-        titleUsername.setText(usernameUser);
+        edtName.setText(nameUser);
+        edtUsername.setText(usernameUser);
         profileName.setText(nameUser);
         profileEmail.setText(emailUser);
         profileUsername.setText(usernameUser);

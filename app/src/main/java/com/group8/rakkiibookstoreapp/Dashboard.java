@@ -49,14 +49,24 @@ public class Dashboard extends AppCompatActivity {
         statusBarColor();
         initRecyclerView();
         addEvents();
-        bottomNavigation();
+        bottomNavigation_cart();
+        bottomNavigation_profile();
     }
 
-    private void bottomNavigation() {
+    private void bottomNavigation_cart() {
         binding.btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Dashboard.this, CartActivity.class));
+            }
+        });
+    }
+
+    private void bottomNavigation_profile() {
+        binding.btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, ProfileActivity.class));
             }
         });
     }
