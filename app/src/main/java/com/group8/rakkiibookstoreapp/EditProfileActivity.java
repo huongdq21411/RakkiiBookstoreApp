@@ -28,27 +28,21 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
 import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
 
 public class EditProfileActivity extends AppCompatActivity {
-    EditText edtName, edtEmail, edtUsername, edtPassword;
-    Button btnSave;
+    ActivityEditProfileBinding binding;
     String nameUser, emailUser, usernameUser, passwordUser;
     DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         reference = FirebaseDatabase.getInstance().getReference("users");
 
-        edtName = findViewById(R.id.edtName);
-        edtEmail = findViewById(R.id.edtEmail);
-        edtUsername = findViewById(R.id.edtUsername);
-        edtPassword = findViewById(R.id.edtPassword);
-        btnSave = findViewById(R.id.btnSave);
-
         showData();
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isNameChanged() || isEmailChanged() || isPasswordChanged()) {
@@ -60,37 +54,37 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
-    public boolean isNameChanged(){
-        if (!nameUser.equals(edtName.getText().toString())){
-            reference.child(usernameUser).child("name").setValue(edtName.getText().toString());
-            nameUser = edtName.getText().toString();
+    public boolean isNameChanged() {
+        if (!nameUser.equals(binding.edtName.getText().toString())) {
+            reference.child(usernameUser).child("name").setValue(binding.edtName.getText().toString());
+            nameUser = binding.edtName.getText().toString();
             return true;
-        } else{
+        } else {
             return false;
         }
     }
 
-    public boolean isEmailChanged(){
-        if (!emailUser.equals(edtName.getText().toString())){
-            reference.child(usernameUser).child("email").setValue(edtEmail.getText().toString());
-            emailUser = edtEmail.getText().toString();
+    public boolean isEmailChanged() {
+        if (!emailUser.equals(binding.edtEmail.getText().toString())) {
+            reference.child(usernameUser).child("email").setValue(binding.edtEmail.getText().toString());
+            emailUser = binding.edtEmail.getText().toString();
             return true;
-        } else{
+        } else {
             return false;
         }
     }
 
-    public boolean isPasswordChanged(){
-        if (!passwordUser.equals(edtPassword.getText().toString())){
-            reference.child(usernameUser).child("password").setValue(edtPassword.getText().toString());
-            passwordUser = edtPassword.getText().toString();
+    public boolean isPasswordChanged() {
+        if (!passwordUser.equals(binding.edtPassword.getText().toString())) {
+            reference.child(usernameUser).child("password").setValue(binding.edtPassword.getText().toString());
+            passwordUser = binding.edtPassword.getText().toString();
             return true;
-        } else{
+        } else {
             return false;
         }
     }
 
-    public void showData(){
+    public void showData() {
         Intent intent = getIntent();
 
         nameUser = intent.getStringExtra("name");
@@ -98,9 +92,9 @@ public class EditProfileActivity extends AppCompatActivity {
         usernameUser = intent.getStringExtra("username");
         passwordUser = intent.getStringExtra("password");
 
-        edtName.setText(nameUser);
-        edtEmail.setText(emailUser);
-        edtUsername.setText(usernameUser);
-        edtPassword.setText(passwordUser);
+        binding.edtName.setText(nameUser);
+        binding.edtEmail.setText(emailUser);
+        binding.edtUsername.setText(usernameUser);
+        binding.edtPassword.setText(passwordUser);
     }
 }

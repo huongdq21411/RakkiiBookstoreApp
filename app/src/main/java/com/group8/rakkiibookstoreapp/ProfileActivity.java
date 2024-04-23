@@ -22,28 +22,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.group8.rakkiibookstoreapp.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
-    TextView profileName, profileEmail, profileUsername, profilePassword;
-    TextView edtName, edtUsername;
-    Button btnEditProf;
+    ActivityProfileBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
-        profileName = findViewById(R.id.profileName);
-        profileEmail = findViewById(R.id.profileEmail);
-        profileUsername = findViewById(R.id.profileUsername);
-        profilePassword = findViewById(R.id.profilePassword);
-        edtName = findViewById(R.id.edtName);
-        edtUsername = findViewById(R.id.edtUsername);
-        btnEditProf = findViewById(R.id.btnEditProf);
+        binding = ActivityProfileBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         showUserData();
 
-        btnEditProf.setOnClickListener(new View.OnClickListener() {
+        binding.btnEditProf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 passUserData();
@@ -51,8 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    public void showUserData(){
-
+    public void showUserData() {
         Intent intent = getIntent();
 
         String nameUser = intent.getStringExtra("name");
@@ -60,16 +51,16 @@ public class ProfileActivity extends AppCompatActivity {
         String usernameUser = intent.getStringExtra("username");
         String passwordUser = intent.getStringExtra("password");
 
-        edtName.setText(nameUser);
-        edtUsername.setText(usernameUser);
-        profileName.setText(nameUser);
-        profileEmail.setText(emailUser);
-        profileUsername.setText(usernameUser);
-        profilePassword.setText(passwordUser);
+        binding.edtName.setText(nameUser);
+        binding.edtUsername.setText(usernameUser);
+        binding.profileName.setText(nameUser);
+        binding.profileEmail.setText(emailUser);
+        binding.profileUsername.setText(usernameUser);
+        binding.profilePassword.setText(passwordUser);
     }
 
-    public void passUserData(){
-        String userUsername = profileUsername.getText().toString().trim();
+    public void passUserData() {
+        String userUsername = binding.profileUsername.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
@@ -78,7 +69,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-
                     String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
                     String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
                     String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
