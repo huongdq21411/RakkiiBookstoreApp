@@ -41,8 +41,8 @@
                 android:background="@drawable/purple_border"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
-                android:hint="Name"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:hint="@string/name"
+                android:drawableStart="@drawable/ic_baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
@@ -53,8 +53,8 @@
                 android:background="@drawable/purple_border"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="Email"
-                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:hint="@string/email"
+                android:drawableStart="@drawable/ic_baseline_email_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
@@ -65,8 +65,8 @@
                 android:background="@drawable/purple_border"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="Username"
-                android:drawableLeft="@drawable/ic_baseline_person_pin_24"
+                android:hint="@string/user_name"
+                android:drawableStart="@drawable/ic_baseline_person_pin_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
@@ -77,9 +77,9 @@
                 android:background="@drawable/purple_border"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
-                android:hint="Password"
+                android:hint="@string/pass"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 

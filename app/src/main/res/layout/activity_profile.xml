@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Name"
+        android:text="Nguyễn Thị Thanh Trúc"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -38,7 +38,7 @@
         android:id="@+id/edtUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="username"
+        android:text="trucxinhdep278"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@id/edtName"
@@ -172,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/purple_Dark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="name"
+                android:text="Nguyễn Thị Thanh Trúc"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/grey"
                 android:textSize="18sp" />
@@ -208,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Email"
+                android:text="@string/email"
                 android:textColor="@color/purple_Dark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -218,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="email"
+                android:text="trucntt21411@st.uel.edu.vn"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/grey"
                 android:textSize="18sp" />
@@ -244,7 +244,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Username"
+                android:text="@string/user_name"
                 android:textColor="@color/purple_Dark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -254,7 +254,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="username"
+                android:text="trucxinhdep278"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/grey"
                 android:textSize="18sp" />
@@ -280,7 +280,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Password"
+                android:text="@string/pass"
                 android:textColor="@color/purple_Dark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -290,7 +290,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="password"
+                android:text="278@Trucxinhdep"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/grey"
                 android:textSize="18sp" />
