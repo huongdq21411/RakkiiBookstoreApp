@@ -30,34 +30,17 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText loginUsername, loginPassword;
-    Button loginButton;
-    TextView signupRedirectText;
-//    boolean isReady = false;
+    ActivityLoginBinding binding;
+    String nameUser, emailUser, usernameUser, passwordUser;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-//        View content = findViewById(android.R.id.content);
-//        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
-//            @Override
-//            public void onDraw() {
-//                if (isReady){
-//                    content.getViewTreeObserver().removeOnDrawListener(this);
-//                }
-//                dismissSplashScreen();
-//            }
-//
-//        });
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        loginUsername = findViewById(R.id.login_username);
-        loginPassword = findViewById(R.id.login_password);
-        signupRedirectText = findViewById(R.id.signupRedirectText);
-        loginButton = findViewById(R.id.login_button);
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!(!validateUsername() | !validatePassword())) {
@@ -66,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        signupRedirectText.setOnClickListener(new View.OnClickListener() {
+        binding.signupRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
@@ -75,31 +58,31 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public Boolean validateUsername(){
-        String val = loginUsername.getText().toString();
-        if (val.isEmpty()){
-            loginUsername.setError("Username cannot be empty!");
+    public Boolean validateUsername() {
+        String val = binding.loginUsername.getText().toString();
+        if (val.isEmpty()) {
+            binding.loginUsername.setError("Username cannot be empty!");
             return false;
         } else {
-            loginUsername.setError(null);
+            binding.loginUsername.setError(null);
             return true;
         }
     }
 
-    public Boolean validatePassword(){
-        String val = loginPassword.getText().toString();
-        if (val.isEmpty()){
-            loginPassword.setError("Password cannot be empty!");
+    public Boolean validatePassword() {
+        String val = binding.loginPassword.getText().toString();
+        if (val.isEmpty()) {
+            binding.loginPassword.setError("Password cannot be empty!");
             return false;
         } else {
-            loginPassword.setError(null);
+            binding.loginPassword.setError(null);
             return true;
         }
     }
 
-    public void checkUser(){
-        String userUsername = loginUsername.getText().toString().trim();
-        String userPassword = loginPassword.getText().toString().trim();
+    public void checkUser() {
+        String userUsername = binding.loginUsername.getText().toString().trim();
+        String userPassword = binding.loginPassword.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
@@ -107,16 +90,13 @@ public class LoginActivity extends AppCompatActivity {
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if (snapshot.exists()){
-                    loginUsername.setError(null);
+                if (snapshot.exists()) {
+                    binding.loginUsername.setError(null);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
                     assert passwordFromDB != null;
-                    if (passwordFromDB.equals(userPassword)){
-                        loginUsername.setError(null);
-
-                        //Pass the data using intent
+                    if (passwordFromDB.equals(userPassword)) {
+                        binding.loginUsername.setError(null);
 
                         String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
                         String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
@@ -132,12 +112,12 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     } else {
-                        loginPassword.setError("Invalid Credentials");
-                        loginPassword.requestFocus();
+                        binding.loginPassword.setError("Invalid Credentials");
+                        binding.loginPassword.requestFocus();
                     }
                 } else {
-                    loginUsername.setError("User does not exist");
-                    loginUsername.requestFocus();
+                    binding.loginUsername.setError("User does not exist");
+                    binding.loginUsername.requestFocus();
                 }
             }
 
@@ -147,12 +127,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-//    private void dismissSplashScreen() {
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                isReady = true;
-//            }
-//        }, 3000);
-//    }
 }

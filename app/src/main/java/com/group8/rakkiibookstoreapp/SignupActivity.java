@@ -20,35 +20,26 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
 import com.group8.rakkiibookstoreapp.databinding.ActivitySignupBinding;
 
 public class SignupActivity extends AppCompatActivity {
-    EditText signupName, signupEmail, signupUsername, signupPassword;
-    TextView loginRedirectText;
-    Button signupButton;
+    ActivitySignupBinding binding;
     FirebaseDatabase database;
     DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        binding = ActivitySignupBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        signupName = findViewById(R.id.signup_name);
-        signupEmail = findViewById(R.id.signup_email);
-        signupUsername = findViewById(R.id.signup_username);
-        signupPassword = findViewById(R.id.signup_password);
-        signupButton = findViewById(R.id.signup_button);
-        loginRedirectText = findViewById(R.id.loginRedirectText);
-
-        signupButton.setOnClickListener(new View.OnClickListener() {
+        binding.signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("users");
 
-                String name = signupName.getText().toString();
-                String email = signupEmail.getText().toString();
-                String username = signupUsername.getText().toString();
-                String password = signupPassword.getText().toString();
+                String name = binding.signupName.getText().toString();
+                String email = binding.signupEmail.getText().toString();
+                String username = binding.signupUsername.getText().toString();
+                String password = binding.signupPassword.getText().toString();
 
                 HelperClass helperClass = new HelperClass(name, email, username, password);
                 reference.child(username).setValue(helperClass);
@@ -59,13 +50,12 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        loginRedirectText.setOnClickListener(new View.OnClickListener() {
+        binding.loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 }
