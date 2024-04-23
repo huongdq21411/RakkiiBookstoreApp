@@ -28,8 +28,8 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
 import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
 
 public class EditProfileActivity extends AppCompatActivity {
-    EditText editName, editEmail, editUsername, editPassword;
-    Button saveButton;
+    EditText edtName, edtEmail, edtUsername, edtPassword;
+    Button btnSave;
     String nameUser, emailUser, usernameUser, passwordUser;
     DatabaseReference reference;
 
@@ -40,15 +40,15 @@ public class EditProfileActivity extends AppCompatActivity {
 
         reference = FirebaseDatabase.getInstance().getReference("users");
 
-        editName = findViewById(R.id.editName);
-        editEmail = findViewById(R.id.editEmail);
-        editUsername = findViewById(R.id.editUsername);
-        editPassword = findViewById(R.id.editPassword);
-        saveButton = findViewById(R.id.saveButton);
+        edtName = findViewById(R.id.edtName);
+        edtEmail = findViewById(R.id.edtEmail);
+        edtUsername = findViewById(R.id.edtUsername);
+        edtPassword = findViewById(R.id.edtPassword);
+        btnSave = findViewById(R.id.btnSave);
 
         showData();
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isNameChanged() || isEmailChanged() || isPasswordChanged()) {
@@ -61,9 +61,9 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public boolean isNameChanged(){
-        if (!nameUser.equals(editName.getText().toString())){
-            reference.child(usernameUser).child("name").setValue(editName.getText().toString());
-            nameUser = editName.getText().toString();
+        if (!nameUser.equals(edtName.getText().toString())){
+            reference.child(usernameUser).child("name").setValue(edtName.getText().toString());
+            nameUser = edtName.getText().toString();
             return true;
         } else{
             return false;
@@ -71,9 +71,9 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public boolean isEmailChanged(){
-        if (!emailUser.equals(editName.getText().toString())){
-            reference.child(usernameUser).child("email").setValue(editEmail.getText().toString());
-            emailUser = editEmail.getText().toString();
+        if (!emailUser.equals(edtName.getText().toString())){
+            reference.child(usernameUser).child("email").setValue(edtEmail.getText().toString());
+            emailUser = edtEmail.getText().toString();
             return true;
         } else{
             return false;
@@ -81,9 +81,9 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public boolean isPasswordChanged(){
-        if (!passwordUser.equals(editPassword.getText().toString())){
-            reference.child(usernameUser).child("password").setValue(editPassword.getText().toString());
-            passwordUser = editPassword.getText().toString();
+        if (!passwordUser.equals(edtPassword.getText().toString())){
+            reference.child(usernameUser).child("password").setValue(edtPassword.getText().toString());
+            passwordUser = edtPassword.getText().toString();
             return true;
         } else{
             return false;
@@ -98,9 +98,9 @@ public class EditProfileActivity extends AppCompatActivity {
         usernameUser = intent.getStringExtra("username");
         passwordUser = intent.getStringExtra("password");
 
-        editName.setText(nameUser);
-        editEmail.setText(emailUser);
-        editUsername.setText(usernameUser);
-        editPassword.setText(passwordUser);
+        edtName.setText(nameUser);
+        edtEmail.setText(emailUser);
+        edtUsername.setText(usernameUser);
+        edtPassword.setText(passwordUser);
     }
 }

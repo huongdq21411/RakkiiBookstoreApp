@@ -35,56 +35,56 @@
                 android:textColor="@color/purple_Dark"/>
 
             <EditText
+                android:id="@+id/edtName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/editName"
                 android:background="@drawable/purple_border"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
                 android:hint="Name"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableStart="@drawable/ic_baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/grey"/>
 
             <EditText
+                android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/editEmail"
                 android:background="@drawable/purple_border"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Email"
-                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawableStart="@drawable/ic_baseline_email_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/grey"/>
 
             <EditText
+                android:id="@+id/edtUsername"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/editUsername"
                 android:background="@drawable/purple_border"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Username"
-                android:drawableLeft="@drawable/ic_baseline_person_pin_24"
+                android:drawableStart="@drawable/ic_baseline_person_pin_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/grey"/>
 
             <EditText
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/editPassword"
                 android:background="@drawable/purple_border"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
             <Button
-                android:id="@+id/saveButton"
+                android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Save"
