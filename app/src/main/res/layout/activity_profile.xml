@@ -86,10 +86,10 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtPosts"
+                    android:id="@+id/txtBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Posts"
+                    android:text="Sách đã mua"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="16sp" />
@@ -110,7 +110,7 @@
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:gravity="center"
-                    android:text="455"
+                    android:text="45"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="26sp"
@@ -120,7 +120,7 @@
                     android:id="@+id/txtFollowers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Followers"
+                    android:text="Người theo dõi"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="16sp" />
@@ -141,7 +141,7 @@
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:gravity="center"
-                    android:text="413"
+                    android:text="41"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="26sp"
@@ -151,7 +151,7 @@
                     android:id="@+id/txtFollowing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Following"
+                    android:text="Đang theo dõi"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="16sp" />
@@ -305,7 +305,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="@color/white"
-        android:text="Edit Profile"
+        android:text="Sửa hồ sơ"
         android:textSize="18sp"
         app:cornerRadius="20dp"
         android:layout_margin="24dp"
