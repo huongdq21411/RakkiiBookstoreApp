@@ -75,7 +75,7 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/numbPosts"
+                    android:id="@+id/numbBook"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:gravity="center"
@@ -89,7 +89,7 @@
                     android:id="@+id/txtBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sách đã mua"
+                    android:text="Đã mua"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="16sp" />
@@ -106,21 +106,21 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/numbFollowers"
+                    android:id="@+id/numbReview"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:gravity="center"
-                    android:text="45"
+                    android:text="12"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtFollowers"
+                    android:id="@+id/txtReview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Người theo dõi"
+                    android:text="Bình luận"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="16sp" />
@@ -137,21 +137,21 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/numbFollowing"
+                    android:id="@+id/numbRate"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:gravity="center"
-                    android:text="41"
+                    android:text="21"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtFollowing"
+                    android:id="@+id/txtRate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Đang theo dõi"
+                    android:text="Đánh giá"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="16sp" />

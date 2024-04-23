@@ -96,16 +96,16 @@
                 android:background="@drawable/btn_background"/>
 
             <TextView
+                android:id="@+id/loginRedirectText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/loginRedirectText"
-                android:text="Đã có taài khoản? Đăng nhập"
                 android:layout_gravity="center"
-                android:padding="8dp"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
+                android:padding="8dp"
+                android:text="Đã có tài khoản? Đăng nhập"
                 android:textColor="@color/purple_Dark"
-                android:textStyle="italic"/>
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
         </LinearLayout>
 
