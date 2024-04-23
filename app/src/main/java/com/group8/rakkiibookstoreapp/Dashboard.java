@@ -3,6 +3,7 @@ package com.group8.rakkiibookstoreapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -36,7 +37,15 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onDraw() {
                 if (isReady){
-                    content.getViewTreeObserver().removeOnDrawListener(this);
+                    // Use a Handler to defer the removal of the listener
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ViewTreeObserver.OnDrawListener onDrawListener;
+                            onDrawListener = null;
+                            content.getViewTreeObserver().removeOnDrawListener(null);
+                        }
+                    });
                 }
                 dismissSplashScreen();
             }
