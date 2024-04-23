@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    implementation ("com.github.bumptech.glide:glide:4.14.2")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -46,6 +46,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation ("androidx.core:core-splashscreen:1.0.0")
+    implementation ("androidx.core:core-splashscreen:1.0.1")
+    implementation ("com.google.zxing:core:3.4.1")
+    implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
+
 
 }
