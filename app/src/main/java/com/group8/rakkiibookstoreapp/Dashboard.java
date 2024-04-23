@@ -1,17 +1,21 @@
 package com.group8.rakkiibookstoreapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.group8.rakkiibookstoreapp.adapter.PopularProductAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
 import com.group8.rakkiibookstoreapp.model.BookList;
@@ -55,7 +59,10 @@ public class Dashboard extends AppCompatActivity {
         addEvents();
         bottomNavigation_cart();
         bottomNavigation_profile();
+        startQRScanner();
     }
+
+
 
     private void bottomNavigation_cart() {
         binding.btnCart.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +135,7 @@ public class Dashboard extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
     private void dismissSplashScreen() {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -135,5 +143,53 @@ public class Dashboard extends AppCompatActivity {
                 isReady = true;
             }
         }, 3000);
+    }
+
+    // Hàm để bắt đầu quét mã QR
+    private void startQRScanner() {
+        binding.imvQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(Dashboard.this);
+                integrator.setOrientationLocked(false);
+                integrator.initiateScan();
+            }
+        });
+    }
+
+    // Xử lý kết quả quét mã QR
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() == null) {
+                // Nếu người dùng hủy quét
+                Toast.makeText(this, "Bạn đã hủy quét.", Toast.LENGTH_SHORT).show();
+            } else {
+                // Kiểm tra xem kết quả có phải là một đường dẫn URL hay không
+                String scannedResult = result.getContents();
+                if (isURL(scannedResult)) {
+                    // Nếu là đường dẫn URL, mở trình duyệt web và hiển thị trang web
+                    openWebPage(scannedResult);
+                } else {
+                    // Nếu không phải là đường dẫn URL, thông báo không phải
+                    Toast.makeText(this, "Kết quả không phải là một đường dẫn URL: " + scannedResult, Toast.LENGTH_SHORT).show();
+                }
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    // Hàm kiểm tra xem chuỗi có phải là một đường dẫn URL hay không
+    private boolean isURL(String text) {
+        return text != null && (text.startsWith("http://") || text.startsWith("https://"));
+    }
+
+    // Hàm mở trình duyệt web và hiển thị trang web tương ứng
+    private void openWebPage(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 }
