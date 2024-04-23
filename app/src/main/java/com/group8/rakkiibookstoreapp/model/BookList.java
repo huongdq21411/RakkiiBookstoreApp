@@ -3,7 +3,7 @@ package com.group8.rakkiibookstoreapp.model;
 import java.io.Serializable;
 
 public class BookList implements Serializable {
-    private int numberInChart;
+    private int numberInCart;
     private String category;
     private String title;
     private String picUrl;
@@ -12,8 +12,8 @@ public class BookList implements Serializable {
     private double price;
     private String description;
 
-    public BookList(int numberInChart, String category, String title, String picUrl, int review, double score, double price, String description) {
-        this.numberInChart = numberInChart;
+    public BookList(int numberInCart, String category, String title, String picUrl, int review, double score, double price, String description) {
+        this.numberInCart = numberInCart;
         this.category = category;
         this.title = title;
         this.picUrl = picUrl;
@@ -21,6 +21,22 @@ public class BookList implements Serializable {
         this.score = score;
         this.price = price;
         this.description = description;
+    }
+
+    public int getNumberInCart() {
+        return numberInCart;
+    }
+
+    public void setNumberInCart(int numberInCart) {
+        this.numberInCart = numberInCart;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getTitle() {
@@ -55,14 +71,6 @@ public class BookList implements Serializable {
         this.score = score;
     }
 
-    public int getNumberInChart() {
-        return numberInChart;
-    }
-
-    public void setNumberInChart(int numberInChart) {
-        this.numberInChart = numberInChart;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -77,13 +85,5 @@ public class BookList implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 }

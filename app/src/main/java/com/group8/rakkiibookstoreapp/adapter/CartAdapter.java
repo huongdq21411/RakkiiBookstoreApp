@@ -14,18 +14,18 @@ import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.group8.rakkiibookstoreapp.databinding.ViewholderCartBinding;
 import com.group8.rakkiibookstoreapp.helper.ChangeNumberItemsListener;
 import com.group8.rakkiibookstoreapp.helper.ManagmentCart;
-import com.group8.rakkiibookstoreapp.model.PopularProduct;
+import com.group8.rakkiibookstoreapp.model.BookList;
 
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
-    ArrayList<PopularProduct> items;
+    ArrayList<BookList> items;
     Context context;
     ViewholderCartBinding binding;
     ChangeNumberItemsListener changeNumberItemsListener;
     ManagmentCart managmentCart;
 
-    public CartAdapter(ArrayList<PopularProduct> items, ChangeNumberItemsListener changeNumberItemsListener) {
+    public CartAdapter(ArrayList<BookList> items, ChangeNumberItemsListener changeNumberItemsListener) {
         this.items = items;
         this.changeNumberItemsListener = changeNumberItemsListener;
     }

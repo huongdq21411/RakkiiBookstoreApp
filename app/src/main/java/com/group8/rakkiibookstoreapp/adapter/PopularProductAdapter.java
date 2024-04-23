@@ -14,18 +14,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.group8.rakkiibookstoreapp.DetailActivity;
 import com.group8.rakkiibookstoreapp.databinding.ViewholderPupListBinding;
-import com.group8.rakkiibookstoreapp.model.PopularProduct;
+import com.group8.rakkiibookstoreapp.model.BookList;
 
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAdapter.Viewholder> {
-    ArrayList<PopularProduct> items;
+    ArrayList<BookList> items;
     Context context;
     ViewholderPupListBinding binding;
 
-    public PopularProductAdapter(ArrayList<PopularProduct> items) {
+    public PopularProductAdapter(ArrayList<BookList> items) {
         this.items = items;
     }
 

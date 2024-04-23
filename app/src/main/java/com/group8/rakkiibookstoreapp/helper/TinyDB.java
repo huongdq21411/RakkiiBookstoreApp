@@ -11,7 +11,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 //import com.google.gson.Gson;
-import com.group8.rakkiibookstoreapp.model.PopularProduct;
+
+import com.group8.rakkiibookstoreapp.model.BookList;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -305,11 +306,11 @@ public class TinyDB {
     }
 
 
-    public ArrayList<PopularProduct> getListObject(String key){
+    public ArrayList<BookList> getListObject(String key){
 //        Gson gson = new Gson();
 
         ArrayList<String> objStrings = getListString(key);
-        ArrayList<PopularProduct> playerList =  new ArrayList<PopularProduct>();
+        ArrayList<BookList> playerList =  new ArrayList<BookList>();
 
         for(String jObjString : objStrings){
 //            PopularProduct player  = gson.fromJson(jObjString,  PopularProduct.class);
@@ -467,7 +468,7 @@ public class TinyDB {
 //        putString(key, gson.toJson(obj));
     }
 
-    public void putListObject(String key, ArrayList<PopularProduct> playerList){
+    public void putListObject(String key, ArrayList<BookList> playerList){
         checkForNullKey(key);
 //        Gson gson = new Gson();
 //        ArrayList<String> objStrings = new ArrayList<String>();
