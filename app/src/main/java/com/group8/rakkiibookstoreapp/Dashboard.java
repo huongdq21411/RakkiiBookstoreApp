@@ -26,9 +26,22 @@ import androidx.core.splashscreen.SplashScreen;
 public class Dashboard extends AppCompatActivity {
 
     ActivityDashboardBinding binding;
+    boolean isReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        View content = findViewById(android.R.id.content);
+        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
+            @Override
+            public void onDraw() {
+                if (isReady){
+                    content.getViewTreeObserver().removeOnDrawListener(this);
+                }
+                dismissSplashScreen();
+            }
+
+        });
         super.onCreate(savedInstanceState);
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -103,5 +116,13 @@ public class Dashboard extends AppCompatActivity {
             intent.putExtra("category", "nocat");
             startActivity(intent);
         });
+    }
+    private void dismissSplashScreen() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                isReady = true;
+            }
+        }, 3000);
     }
 }

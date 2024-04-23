@@ -35,10 +35,10 @@
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Dashboard"
             android:exported="true"
             android:theme="@style/Theme.App.SplashScreen">
             <intent-filter>

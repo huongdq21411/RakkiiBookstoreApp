@@ -33,22 +33,22 @@ public class LoginActivity extends AppCompatActivity {
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView signupRedirectText;
-    boolean isReady = false;
+//    boolean isReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-        View content = findViewById(android.R.id.content);
-        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
-            @Override
-            public void onDraw() {
-                if (isReady){
-                    content.getViewTreeObserver().removeOnDrawListener(this);
-                }
-                dismissSplashScreen();
-            }
-
-        });
+//        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+//        View content = findViewById(android.R.id.content);
+//        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
+//            @Override
+//            public void onDraw() {
+//                if (isReady){
+//                    content.getViewTreeObserver().removeOnDrawListener(this);
+//                }
+//                dismissSplashScreen();
+//            }
+//
+//        });
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -147,12 +147,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    private void dismissSplashScreen() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                isReady = true;
-            }
-        }, 3000);
-    }
+//    private void dismissSplashScreen() {
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                isReady = true;
+//            }
+//        }, 3000);
+//    }
 }

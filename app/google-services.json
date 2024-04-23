@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "608211223145",
+    "project_id": "rakkiibookstoreapp-689e0",
+    "storage_bucket": "rakkiibookstoreapp-689e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608211223145:android:09890d754c0b1ff1f858f8",
+        "android_client_info": {
+          "package_name": "com.group8.rakkiibookstoreapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaWbA_NXSSqpsgLIDisJZVIYyhF4eHJkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
