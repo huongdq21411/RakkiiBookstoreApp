@@ -83,7 +83,7 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/signup_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

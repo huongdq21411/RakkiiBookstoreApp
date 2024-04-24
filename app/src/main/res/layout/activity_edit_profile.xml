@@ -83,17 +83,17 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@android:style/Widget.Button"
+                android:background="@drawable/btn_background"
                 android:text="Lưu"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:cornerRadius="20dp"
-                style="@android:style/Widget.Button"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/btn_background"/>
+                android:layout_marginTop="30dp" />
 
 
         </LinearLayout>
