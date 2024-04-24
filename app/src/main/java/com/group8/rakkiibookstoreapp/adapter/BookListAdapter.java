@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -51,6 +50,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
         binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         context = parent.getContext();
         managmentCart = new ManagmentCart(context);
+        wishList = new WishList(context);
         return new Viewholder(binding);
     }
 
@@ -71,7 +71,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
         holder.setThumb(picUrl);
 
         holder.setAddToCart(item);
-        holder.setAddtoWishlist(item);
+        holder.setAddtoWishlist(item, position);
 
         ConstraintLayout itemContent = holder.itemView.findViewById(R.id.itemContent);
         itemContent.setOnClickListener(new View.OnClickListener() {
@@ -131,11 +131,12 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
                 managmentCart.insertFood(object);
             });
         }
-        public void setAddtoWishlist(BookList object) {
+        public void setAddtoWishlist(BookList object, int position) {
             MaterialButton btnLike = itemView.findViewById(R.id.btnLike);
             btnLike.setOnClickListener(v -> {
                 boolean isLiked = !object.isLiked();
                 object.setLiked(isLiked);
+                notifyItemChanged(position);
                 int defaultColor = ContextCompat.getColor(v.getContext(), R.color.unliked);
                 int newColor = ContextCompat.getColor(v.getContext(), R.color.liked);
                 int new_iconResId = v.getResources().getIdentifier("baseline_bookmark_24", "drawable", v.getContext().getPackageName());
@@ -147,16 +148,12 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
                     btnLike.setIcon(new_icon);
                     btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(newColor));
                     wishList.addtoWishlist(object);
-                    notifyDataSetChanged();
                 } else {
                     btnLike.setIcon(icon);
                     btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(defaultColor));
                     wishList.removefromWishlist(object);
-                    notifyDataSetChanged();
                 }
-
-                String message = isLiked ? "Đã thêm vào Yêu thích" : "Đã bỏ khỏi Yêu thích";
-                Toast.makeText(itemView.getContext(), message, Toast.LENGTH_SHORT).show();
+                notifyDataSetChanged();
             });
         }
     }

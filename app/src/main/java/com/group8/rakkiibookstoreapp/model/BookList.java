@@ -1,6 +1,7 @@
 package com.group8.rakkiibookstoreapp.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class BookList implements Serializable {
     private int numberInCart;
@@ -94,5 +95,18 @@ public class BookList implements Serializable {
 
     public void setLiked(boolean liked) {
         isLiked = liked;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookList bookList = (BookList) o;
+        return Objects.equals(title, bookList.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title);
     }
 }

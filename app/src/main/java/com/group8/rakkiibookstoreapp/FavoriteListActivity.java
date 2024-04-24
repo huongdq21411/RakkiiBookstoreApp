@@ -30,13 +30,6 @@ public class FavoriteListActivity extends AppCompatActivity {
         binding = ActivityFavoriteListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         wishList = new WishList(this);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.rvFavBooks), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-        wishList = new WishList(this);
 
         binding.imvBack.setOnClickListener(v -> finish());
         initList();
