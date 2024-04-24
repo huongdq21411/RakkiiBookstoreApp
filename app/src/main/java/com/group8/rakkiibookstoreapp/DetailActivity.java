@@ -14,6 +14,8 @@ import com.group8.rakkiibookstoreapp.model.BookList;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class DetailActivity extends AppCompatActivity {
     private ActivityDetailBinding binding;
@@ -45,7 +47,8 @@ public class DetailActivity extends AppCompatActivity {
 
                     .into(binding.imvProduct);
             binding.txtTitle.setText(((BookList) object).getTitle());
-            DecimalFormat decimalFormat = new DecimalFormat("#.##0");
+            NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
+            DecimalFormat decimalFormat = (DecimalFormat)nf;
             String formattedPrice = decimalFormat.format(((BookList) object).getPrice());
             binding.txtPrice.setText(formattedPrice + " đ");
             binding.txtDescription.setText(((BookList) object).getDescription());
