@@ -47,6 +47,7 @@ public class FavoriteListActivity extends AppCompatActivity {
         BookListAdapter adapter = new BookListAdapter(wishList.getWishList());
         binding.rvFavBooks.setAdapter(adapter);
 
+
         String countText = String.format("%d", adapter.getItemCount());
         String fullText = String.format("Bạn có %s sản phẩm trong Danh sách Yêu thích", countText);
         SpannableString styledText = new SpannableString(fullText);
