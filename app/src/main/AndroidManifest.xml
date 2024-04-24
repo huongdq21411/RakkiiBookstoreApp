@@ -17,6 +17,9 @@
         android:theme="@style/Theme.RakkiiBookstoreApp"
         tools:targetApi="31">
         <activity
+            android:name=".BlogActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity

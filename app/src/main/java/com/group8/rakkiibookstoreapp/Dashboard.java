@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -21,7 +22,6 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
 import com.group8.rakkiibookstoreapp.model.BookList;
 
 import java.util.ArrayList;
-import androidx.core.splashscreen.SplashScreen;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -59,9 +59,18 @@ public class Dashboard extends AppCompatActivity {
         addEvents();
         bottomNavigation_cart();
         bottomNavigation_profile();
+        bottomNavigation_blog();
         startQRScanner();
     }
 
+    private void bottomNavigation_blog() {
+        binding.btnBlog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, BlogActivity.class));
+            }
+        });
+    }
 
 
     private void bottomNavigation_cart() {
