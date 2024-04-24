@@ -36,7 +36,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         showUserData();
 
-        binding.imvBack.setOnClickListener(v -> finish());
+        binding.imvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, Dashboard.class));
+            }
+        });
 
         binding.btnEditProf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,10 +92,14 @@ public class ProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
+
     }
+
 }

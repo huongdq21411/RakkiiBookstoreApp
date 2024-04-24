@@ -10,11 +10,18 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.group8.rakkiibookstoreapp.adapter.PopularProductAdapter;
@@ -31,35 +38,10 @@ public class Dashboard extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-//        View content = findViewById(android.R.id.content);
-//        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
-//            @Override
-//            public void onDraw() {
-//                if (isReady){
-//                    // Use a Handler to defer the removal of the listener
-//                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            ViewTreeObserver.OnDrawListener onDrawListener;
-//                            onDrawListener = null;
-//                            content.getViewTreeObserver().removeOnDrawListener(null);
-//                        }
-//                    });
-//                }
-//                dismissSplashScreen();
-//            }
-//
-//        });
+
         super.onCreate(savedInstanceState);
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        Intent intent = getIntent();
-        nameUser = intent.getStringExtra("name");
-        emailUser = intent.getStringExtra("email");
-        usernameUser = intent.getStringExtra("username");
-        passwordUser = intent.getStringExtra("password");
 
         statusBarColor();
         initRecyclerView();
@@ -70,6 +52,12 @@ public class Dashboard extends AppCompatActivity {
         bottomNavigation_blog();
         startQRScanner();
         showHello();
+
+        Intent intent = getIntent();
+        nameUser = intent.getStringExtra("name");
+        emailUser = intent.getStringExtra("email");
+        usernameUser = intent.getStringExtra("username");
+        passwordUser = intent.getStringExtra("password");
     }
 
     private void showHello() {
@@ -117,6 +105,30 @@ public class Dashboard extends AppCompatActivity {
                 intent.putExtra("password", passwordUser);
                 startActivity(intent);
             }
+        });
+        String userUsername = binding.txtUserName.getText().toString().trim();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
+
+        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
+
+                    Intent intent = new Intent(Dashboard.this, ProfileActivity.class);
+
+                    intent.putExtra("name", nameFromDB);
+
+                    startActivity(intent);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
         });
     }
 

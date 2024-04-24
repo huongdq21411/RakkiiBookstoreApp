@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
     public Boolean validateUsername() {
         String val = binding.loginUsername.getText().toString();
         if (val.isEmpty()) {
-            binding.loginUsername.setError("Username cannot be empty!");
+            binding.loginUsername.setError("Tên đăng nhập không được để trống");
             return false;
         } else {
             binding.loginUsername.setError(null);
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
     public Boolean validatePassword() {
         String val = binding.loginPassword.getText().toString();
         if (val.isEmpty()) {
-            binding.loginPassword.setError("Password cannot be empty!");
+            binding.loginPassword.setError("Mật khẩu không được để trống!");
             return false;
         } else {
             binding.loginPassword.setError(null);
@@ -135,11 +135,11 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     } else {
-                        binding.loginPassword.setError("Invalid Credentials");
+                        binding.loginPassword.setError("Tài khoản này không hợp lệ");
                         binding.loginPassword.requestFocus();
                     }
                 } else {
-                    binding.loginUsername.setError("User does not exist");
+                    binding.loginUsername.setError("Tài khoản này không tồn tại");
                     binding.loginUsername.requestFocus();
                 }
             }

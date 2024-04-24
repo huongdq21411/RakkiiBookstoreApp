@@ -30,7 +30,7 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
 public class EditProfileActivity extends AppCompatActivity {
 
     private ActivityEditProfileBinding binding;
-    String nameUser, emailUser, usernameUser, passwordUser;
+    String nameUser, emailUser, usernameUser, passwordUser, txtUserName;
     DatabaseReference reference;
 
     @Override
@@ -47,7 +47,7 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isNameChanged() || isEmailChanged() || isPasswordChanged()) {
-                    Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfileActivity.this, "Đã lưu", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(EditProfileActivity.this, ProfileActivity.class);
 
                     intent.putExtra("username", usernameUser);
@@ -58,7 +58,14 @@ public class EditProfileActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfileActivity.this, "Tài khoản không thay đổi",
+                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(EditProfileActivity.this, ProfileActivity.class);
+                    intent.putExtra("username", usernameUser);
+                    intent.putExtra("name", nameUser);
+                    intent.putExtra("email", emailUser);
+                    intent.putExtra("password", passwordUser);
+                    startActivity(intent);
                 }
             }
         });
@@ -106,5 +113,6 @@ public class EditProfileActivity extends AppCompatActivity {
         binding.edtEmail.setText(emailUser);
         binding.edtUsername.setText(usernameUser);
         binding.edtPassword.setText(passwordUser);
+
     }
 }
