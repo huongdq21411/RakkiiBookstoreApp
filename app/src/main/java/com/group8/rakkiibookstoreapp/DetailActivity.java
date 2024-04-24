@@ -45,7 +45,7 @@ public class DetailActivity extends AppCompatActivity {
 
                     .into(binding.imvProduct);
             binding.txtTitle.setText(((BookList) object).getTitle());
-            DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+            DecimalFormat decimalFormat = new DecimalFormat("#.##0");
             String formattedPrice = decimalFormat.format(((BookList) object).getPrice());
             binding.txtPrice.setText(formattedPrice + " đ");
             binding.txtDescription.setText(((BookList) object).getDescription());

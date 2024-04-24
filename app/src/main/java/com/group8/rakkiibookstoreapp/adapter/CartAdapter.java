@@ -15,7 +15,10 @@ import com.group8.rakkiibookstoreapp.helper.ChangeNumberItemsListener;
 import com.group8.rakkiibookstoreapp.helper.ManagmentCart;
 import com.group8.rakkiibookstoreapp.model.BookList;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
     ArrayList<BookList> items;
@@ -40,9 +43,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull CartAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
+        DecimalFormat decimalFormat = (DecimalFormat)nf;
+        String displayPrice = decimalFormat.format(items.get(position).getPrice()) + "đ";
+        String displayTotalPrice = decimalFormat.format(Math.round(items.get(position).getNumberInCart() * items.get(position).getPrice())) + "đ";
+
+
         binding.txtTitle.setText(items.get(position).getTitle());
-        binding.txtFeeEachItem.setText("đ" + items.get(position).getPrice());
-        binding.txtTotalEachItem.setText("đ" + Math.round(items.get(position).getNumberInCart()*items.get(position).getPrice()));
+        binding.txtFeeEachItem.setText(displayPrice);
+        binding.txtTotalEachItem.setText(displayTotalPrice);
         binding.txtNumberItem.setText(String.valueOf(items.get(position).getNumberInCart()));
 
         int drawableResourced = holder.itemView.getResources().getIdentifier(items.get(position).getPicUrl(), "drawable", holder.itemView.getContext().getPackageName());

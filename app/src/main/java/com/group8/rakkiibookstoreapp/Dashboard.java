@@ -57,10 +57,20 @@ public class Dashboard extends AppCompatActivity {
         statusBarColor();
         initRecyclerView();
         addEvents();
+        bottomNavigation_fav();
         bottomNavigation_cart();
         bottomNavigation_profile();
         bottomNavigation_blog();
         startQRScanner();
+    }
+
+    private void bottomNavigation_fav() {
+        binding.btnWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this, FavoriteListActivity.class));
+            }
+        });
     }
 
     private void bottomNavigation_blog() {

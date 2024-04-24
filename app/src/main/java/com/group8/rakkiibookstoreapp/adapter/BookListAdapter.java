@@ -22,15 +22,23 @@ import com.google.android.material.button.MaterialButton;
 import com.group8.rakkiibookstoreapp.DetailActivity;
 import com.group8.rakkiibookstoreapp.R;
 import com.group8.rakkiibookstoreapp.databinding.ItemLayoutBinding;
+import com.group8.rakkiibookstoreapp.helper.ManagmentCart;
+import com.group8.rakkiibookstoreapp.helper.WishList;
 import com.group8.rakkiibookstoreapp.model.BookList;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewholder> {
     ArrayList<BookList> items;
     Context context;
     ItemLayoutBinding binding;
+    private ManagmentCart managmentCart;
+    private WishList wishList;
+    private int numberOrder = 1;
+
 
     public BookListAdapter(ArrayList<BookList> items) {
         this.items = items;
@@ -42,28 +50,35 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
     public BookListAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         context = parent.getContext();
+        managmentCart = new ManagmentCart(context);
         return new Viewholder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BookListAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
-        String title = items.get(position).getTitle();
+        BookList item = items.get(position);
+        holder.currentItem = item;
+
+        String title = item.getTitle();
         holder.setTitle(title);
-        double price = items.get(position).getPrice();
+        double price = item.getPrice();
         holder.setPrice(price);
-        String score = String.valueOf(items.get(position).getScore());
+        String score = String.valueOf(item.getScore());
         holder.setScore(score);
-        String category = items.get(position).getCategory();
+        String category = item.getCategory();
         holder.setCategory(category);
-        String picUrl = items.get(position).getPicUrl();
+        String picUrl = item.getPicUrl();
         holder.setThumb(picUrl);
+
+        holder.setAddToCart(item);
+        holder.setAddtoWishlist(item);
 
         ConstraintLayout itemContent = holder.itemView.findViewById(R.id.itemContent);
         itemContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("object", items.get(position));
+                intent.putExtra("object", item);
                 context.startActivity(intent);
             }
         });
@@ -76,39 +91,13 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
 
     public class Viewholder extends RecyclerView.ViewHolder{
         private final ItemLayoutBinding binding;
-        private boolean isLiked = false;
+        public BookList currentItem;
 
         public Viewholder(ItemLayoutBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            MaterialButton btnLike = itemView.findViewById(R.id.btnLike);
-            btnLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int defaultColor = ContextCompat.getColor(btnLike.getContext(), R.color.unliked);
-                    int newColor = ContextCompat.getColor(btnLike.getContext(), R.color.liked);
-                    int new_iconResId = btnLike.getResources().getIdentifier("baseline_bookmark_24", "drawable", btnLike.getContext().getPackageName());
-                    Drawable new_icon = btnLike.getResources().getDrawable(new_iconResId, null);
-                    int iconResId = btnLike.getResources().getIdentifier("baseline_bookmark_border_24", "drawable", btnLike.getContext().getPackageName());
-                    Drawable icon = btnLike.getResources().getDrawable(iconResId, null);
 
-                    isLiked = !isLiked;
-                    if (isLiked) {
-                        btnLike.setIcon(new_icon);
-                        btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(newColor));
-                    } else {
-                        btnLike.setIcon(icon);
-                        btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(defaultColor));
-                    }
-                    showLikeMessage();
-                }
-            });
         }
-        private void showLikeMessage() {
-            String message = isLiked ? "Đã thêm vào Yêu thích" : "Đã bỏ khỏi Yêu thích";
-            Toast.makeText(itemView.getContext(), message, Toast.LENGTH_SHORT).show();
-        }
-
 
         public void setTitle(String title) {
             int maxLines = 3;
@@ -117,7 +106,8 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
             binding.txtTitle.setEllipsize(TextUtils.TruncateAt.END);
         }
         public void setPrice(double price) {
-            DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+            NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
+            DecimalFormat decimalFormat = (DecimalFormat)nf;
             String formattedPrice = decimalFormat.format(price);
             binding.txtPrice.setText(formattedPrice + " đ");
         }
@@ -134,6 +124,38 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
             } else {
                 binding.imvProduct.setImageResource(resourceId);
             }
+        }
+        public void setAddToCart(BookList object) {
+            binding.btnAddToCart.setOnClickListener(v -> {
+                object.setNumberInCart(numberOrder);
+                managmentCart.insertFood(object);
+            });
+        }
+        public void setAddtoWishlist(BookList object) {
+            MaterialButton btnLike = itemView.findViewById(R.id.btnLike);
+            btnLike.setOnClickListener(v -> {
+                boolean isLiked = !object.isLiked();
+                object.setLiked(isLiked);
+                int defaultColor = ContextCompat.getColor(v.getContext(), R.color.unliked);
+                int newColor = ContextCompat.getColor(v.getContext(), R.color.liked);
+                int new_iconResId = v.getResources().getIdentifier("baseline_bookmark_24", "drawable", v.getContext().getPackageName());
+                Drawable new_icon = v.getResources().getDrawable(new_iconResId, null);
+                int iconResId = v.getResources().getIdentifier("baseline_bookmark_border_24", "drawable", v.getContext().getPackageName());
+                Drawable icon = v.getResources().getDrawable(iconResId, null);
+
+                if (isLiked) {
+                    btnLike.setIcon(new_icon);
+                    btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(newColor));
+                    wishList.addtoWishlist(object);
+                } else {
+                    btnLike.setIcon(icon);
+                    btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(defaultColor));
+                    wishList.removefromWishlist(object);
+                }
+
+                String message = isLiked ? "Đã thêm vào Yêu thích" : "Đã bỏ khỏi Yêu thích";
+                Toast.makeText(itemView.getContext(), message, Toast.LENGTH_SHORT).show();
+            });
         }
     }
 }

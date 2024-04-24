@@ -11,6 +11,7 @@ public class BookList implements Serializable {
     private double score;
     private double price;
     private String description;
+    private boolean isLiked;
 
     public BookList(int numberInCart, String category, String title, String picUrl, int review, double score, double price, String description) {
         this.numberInCart = numberInCart;
@@ -85,5 +86,13 @@ public class BookList implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
     }
 }

@@ -18,7 +18,9 @@ import com.group8.rakkiibookstoreapp.model.BookList;
 
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAdapter.Viewholder> {
     ArrayList<BookList> items;
@@ -42,7 +44,8 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
     public void onBindViewHolder(@NonNull PopularProductAdapter.Viewholder holder, @SuppressLint(
             "RecyclerView") int position) {
         binding.txtTitle.setText(items.get(position).getTitle());
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
+        DecimalFormat decimalFormat = (DecimalFormat)nf;
         String formattedPrice = decimalFormat.format(items.get(position).getPrice());
         String displayPrice = formattedPrice + "đ";
         binding.txtPrice.setText(displayPrice);
