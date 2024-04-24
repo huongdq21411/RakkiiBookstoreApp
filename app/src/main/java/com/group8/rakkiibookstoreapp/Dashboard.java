@@ -97,7 +97,6 @@ public class Dashboard extends AppCompatActivity {
         });
     }
 
-
     private void bottomNavigation_cart() {
         binding.btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +114,7 @@ public class Dashboard extends AppCompatActivity {
                 intent.putExtra("name", nameUser);
                 intent.putExtra("email", emailUser);
                 intent.putExtra("username", usernameUser);
-                intent.putExtra("password", passwordUser); // Consider removing this line for security reasons.
+                intent.putExtra("password", passwordUser);
                 startActivity(intent);
             }
         });

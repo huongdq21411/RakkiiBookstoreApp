@@ -36,12 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         showUserData();
 
-        binding.imvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, Dashboard.class));
-            }
-        });
+        binding.imvBack.setOnClickListener(v -> finish());
 
         binding.btnEditProf.setOnClickListener(new View.OnClickListener() {
             @Override
