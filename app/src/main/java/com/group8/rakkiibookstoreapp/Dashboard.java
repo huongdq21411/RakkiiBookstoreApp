@@ -43,6 +43,12 @@ public class Dashboard extends AppCompatActivity {
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent intent = getIntent();
+        nameUser = intent.getStringExtra("name");
+        emailUser = intent.getStringExtra("email");
+        usernameUser = intent.getStringExtra("username");
+        passwordUser = intent.getStringExtra("password");
+
         statusBarColor();
         initRecyclerView();
         addEvents();
@@ -52,17 +58,10 @@ public class Dashboard extends AppCompatActivity {
         bottomNavigation_blog();
         startQRScanner();
         showHello();
-
-        Intent intent = getIntent();
-        nameUser = intent.getStringExtra("name");
-        emailUser = intent.getStringExtra("email");
-        usernameUser = intent.getStringExtra("username");
-        passwordUser = intent.getStringExtra("password");
     }
 
     private void showHello() {
         Intent intent = getIntent();
-
         String nameUser = intent.getStringExtra("name");
         binding.txtUserName.setText(nameUser);
     }

@@ -29,8 +29,8 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    private ActivityEditProfileBinding binding;
-    String nameUser, emailUser, usernameUser, passwordUser, txtUserName;
+    ActivityEditProfileBinding binding;
+    String nameUser, emailUser, usernameUser, passwordUser;
     DatabaseReference reference;
 
     @Override

@@ -26,7 +26,7 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private ActivityProfileBinding binding;
+    ActivityProfileBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +35,6 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         showUserData();
-
-        binding.imvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, Dashboard.class));
-            }
-        });
 
         binding.btnEditProf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +58,18 @@ public class ProfileActivity extends AppCompatActivity {
         binding.profileEmail.setText(emailUser);
         binding.profileUsername.setText(usernameUser);
         binding.profilePassword.setText(passwordUser);
+
+        binding.imvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, Dashboard.class);
+                intent.putExtra("name", nameUser);
+                intent.putExtra("email", emailUser);
+                intent.putExtra("username", usernameUser);
+                intent.putExtra("password", passwordUser);
+                startActivity(intent);
+            }
+        });
     }
 
     public void passUserData(){
@@ -82,7 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
                     String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
-                    Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+                    Intent intent = new Intent(ProfileActivity.this,  EditProfileActivity.class);
 
                     intent.putExtra("name", nameFromDB);
                     intent.putExtra("email", emailFromDB);
@@ -97,7 +102,6 @@ public class ProfileActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-
         });
 
     }
