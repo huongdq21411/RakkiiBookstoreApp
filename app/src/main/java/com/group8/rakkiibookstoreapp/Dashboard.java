@@ -77,7 +77,6 @@ public class Dashboard extends AppCompatActivity {
 
         String nameUser = intent.getStringExtra("name");
         binding.txtUserName.setText(nameUser);
-
     }
 
     private void bottomNavigation_fav() {

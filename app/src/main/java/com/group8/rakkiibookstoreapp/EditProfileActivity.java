@@ -56,6 +56,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     intent.putExtra("password", passwordUser);
 
                     startActivity(intent);
+
                 } else {
                     Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
                 }
