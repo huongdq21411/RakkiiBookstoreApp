@@ -26,33 +26,40 @@ import java.util.ArrayList;
 public class Dashboard extends AppCompatActivity {
 
     ActivityDashboardBinding binding;
+    String nameUser, emailUser, usernameUser, passwordUser;
     boolean isReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-        View content = findViewById(android.R.id.content);
-        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
-            @Override
-            public void onDraw() {
-                if (isReady){
-                    // Use a Handler to defer the removal of the listener
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            ViewTreeObserver.OnDrawListener onDrawListener;
-                            onDrawListener = null;
-                            content.getViewTreeObserver().removeOnDrawListener(null);
-                        }
-                    });
-                }
-                dismissSplashScreen();
-            }
-
-        });
+//        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+//        View content = findViewById(android.R.id.content);
+//        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
+//            @Override
+//            public void onDraw() {
+//                if (isReady){
+//                    // Use a Handler to defer the removal of the listener
+//                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            ViewTreeObserver.OnDrawListener onDrawListener;
+//                            onDrawListener = null;
+//                            content.getViewTreeObserver().removeOnDrawListener(null);
+//                        }
+//                    });
+//                }
+//                dismissSplashScreen();
+//            }
+//
+//        });
         super.onCreate(savedInstanceState);
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Intent intent = getIntent();
+        nameUser = intent.getStringExtra("name");
+        emailUser = intent.getStringExtra("email");
+        usernameUser = intent.getStringExtra("username");
+        passwordUser = intent.getStringExtra("password");
 
         statusBarColor();
         initRecyclerView();
@@ -62,6 +69,15 @@ public class Dashboard extends AppCompatActivity {
         bottomNavigation_profile();
         bottomNavigation_blog();
         startQRScanner();
+        showHello();
+    }
+
+    private void showHello() {
+        Intent intent = getIntent();
+
+        String nameUser = intent.getStringExtra("name");
+        binding.txtUserName.setText(nameUser);
+
     }
 
     private void bottomNavigation_fav() {
@@ -95,8 +111,13 @@ public class Dashboard extends AppCompatActivity {
     private void bottomNavigation_profile() {
         binding.btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, ProfileActivity.class));
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, ProfileActivity.class);
+                intent.putExtra("name", nameUser);
+                intent.putExtra("email", emailUser);
+                intent.putExtra("username", usernameUser);
+                intent.putExtra("password", passwordUser); // Consider removing this line for security reasons.
+                startActivity(intent);
             }
         });
     }

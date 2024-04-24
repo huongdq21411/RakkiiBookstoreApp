@@ -3,6 +3,7 @@ package com.group8.rakkiibookstoreapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
@@ -33,9 +34,30 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     String nameUser, emailUser, usernameUser, passwordUser;
     DatabaseReference reference;
+    boolean isReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        View content = findViewById(android.R.id.content);
+        content.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
+            @Override
+            public void onDraw() {
+                if (isReady){
+                    // Use a Handler to defer the removal of the listener
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ViewTreeObserver.OnDrawListener onDrawListener;
+                            onDrawListener = null;
+                            content.getViewTreeObserver().removeOnDrawListener(null);
+                        }
+                    });
+                }
+                dismissSplashScreen();
+            }
+
+        });
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -104,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(LoginActivity.this, Dashboard.class);
 
+
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("email", emailFromDB);
                         intent.putExtra("username", usernameFromDB);
@@ -126,5 +149,13 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void dismissSplashScreen() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                isReady = true;
+            }
+        }, 3000);
     }
 }
