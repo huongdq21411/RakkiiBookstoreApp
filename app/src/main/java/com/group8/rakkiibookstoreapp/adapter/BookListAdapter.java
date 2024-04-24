@@ -147,10 +147,12 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
                     btnLike.setIcon(new_icon);
                     btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(newColor));
                     wishList.addtoWishlist(object);
+                    notifyDataSetChanged();
                 } else {
                     btnLike.setIcon(icon);
                     btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(defaultColor));
                     wishList.removefromWishlist(object);
+                    notifyDataSetChanged();
                 }
 
                 String message = isLiked ? "Đã thêm vào Yêu thích" : "Đã bỏ khỏi Yêu thích";

@@ -15,33 +15,13 @@ public class WishList {
 
     public void addtoWishlist(BookList item) {
         ArrayList<BookList> listpop = getWishList();
-        boolean existAlready = false;
-        for (BookList book : listpop) {
-            if (book.getTitle().equals(item.getTitle())) {
-                existAlready = true;
-                break;
-            }
-        }
-        if (!existAlready) {
-            listpop.add(item);
-            tinyDB.putListObject("WishList", listpop);
-        }
+        listpop.add(item);
+        tinyDB.putListObject("WishList", listpop);
     }
     public void removefromWishlist(BookList item) {
         ArrayList<BookList> listpop = getWishList();
-        boolean existAlready = false;
-        int indexToRemove = -1;
-        for (int i = 0; i < listpop.size(); i++) {
-            if (listpop.get(i).getTitle().equals(item.getTitle())) {
-                existAlready = true;
-                indexToRemove = i;
-                break;
-            }
-        }
-        if (existAlready) {
-            listpop.remove(indexToRemove);
-            tinyDB.putListObject("WishList", listpop);
-        }
+        listpop.remove(item);
+        tinyDB.putListObject("WishList", listpop);
     }
     public ArrayList<BookList> getWishList() {
         return tinyDB.getListObject("WishList");
