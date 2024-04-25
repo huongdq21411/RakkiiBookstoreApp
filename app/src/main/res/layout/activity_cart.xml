@@ -65,7 +65,7 @@
                 android:id="@+id/rcvCart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="8dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Chi tiết thanh toán"
-                android:textColor="@color/black"
+                android:textColor="@color/purple_Dark"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
@@ -128,7 +128,7 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textDelivery"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textSubtotal" />
+                    app:layout_constraintTop_toTopOf="@+id/textDelivery" />
 
                 <TextView
                     android:id="@+id/textTotalTax"
@@ -152,7 +152,7 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textTotalTax"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textDelivery" />
+                    app:layout_constraintTop_toTopOf="@+id/textTotalTax" />
 
                 <View
                     android:id="@+id/view"
@@ -201,7 +201,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Thông tin đơn hàng"
-                android:textColor="@color/black"
+                android:textColor="@color/purple_Dark"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
@@ -217,6 +217,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Địa chỉ nhận hàng"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -231,40 +232,28 @@
                     app:layout_constraintTop_toBottomOf="@+id/textYourDeliveryAddress"
                     app:srcCompat="@drawable/baseline_location_pin_24"/>
 
-                <TextView
-                    android:id="@+id/txtAddress"
+
+                <Spinner
+                    android:id="@+id/spAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Tỉnh/Thành phố"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:spinnerMode="dropdown"
                     app:layout_constraintBottom_toBottomOf="@+id/imvAddress"
                     app:layout_constraintStart_toEndOf="@+id/imvAddress"
-                    app:layout_constraintTop_toTopOf="@+id/imvAddress" />
+                    app:layout_constraintTop_toTopOf="@+id/imvAddress"/>
 
-                <ImageView
-                    android:id="@+id/imvAddressOption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtAddress"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textYourDeliveryAddress"
-                    app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
 
                 <View
                     android:id="@+id/view2"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:background="#ABABAB"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+                    app:layout_constraintTop_toBottomOf="@+id/spAddress" />
 
                 <TextView
                     android:id="@+id/textPaymentMethod"
@@ -272,6 +261,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Phương thức thanh toán"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/imvAddress"
@@ -288,28 +278,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/textPaymentMethod"
                     app:srcCompat="@drawable/baseline_credit_card_24" />
 
-                <TextView
-                    android:id="@+id/txtCash"
+
+                <Spinner
+                    android:id="@+id/spPayment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Tiền mặt"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:spinnerMode="dropdown"
                     app:layout_constraintBottom_toBottomOf="@+id/imvPayment"
                     app:layout_constraintStart_toEndOf="@+id/imvPayment"
-                    app:layout_constraintTop_toTopOf="@+id/imvPayment" />
+                    app:layout_constraintTop_toTopOf="@+id/imvPayment"/>
 
-                <ImageView
-                    android:id="@+id/imvPaymentOption"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtCash"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textPaymentMethod"
-                    app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

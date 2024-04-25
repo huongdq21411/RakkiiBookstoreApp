@@ -3,6 +3,7 @@ package com.group8.rakkiibookstoreapp;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,11 +18,17 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityCartBinding;
 import com.group8.rakkiibookstoreapp.helper.ChangeNumberItemsListener;
 import com.group8.rakkiibookstoreapp.helper.ManagmentCart;
 
+import java.util.ArrayList;
+
 public class CartActivity extends AppCompatActivity {
 
     private ManagmentCart managmentCart;
     ActivityCartBinding binding;
     double tax;
+
+    ArrayAdapter<String> adapter;
+    ArrayList<String> address;
+    ArrayList<String> payment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,8 @@ public class CartActivity extends AppCompatActivity {
         initList();
         calculatorCart();
         statusBarColor();
+        loadDataAddress();
+        loadDataPayment();
     }
 
     private void statusBarColor() {
@@ -68,15 +77,15 @@ public class CartActivity extends AppCompatActivity {
 
     private void calculatorCart() {
         double percentTax = 0.01;
-        double delivery = 10;
+        double delivery = 10000;
         tax = Math.round(managmentCart.getTotalFee() * percentTax * 100) / 100;
 
         double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100) / 100;
         double itemTotal = Math.round(managmentCart.getTotalFee()*100/100);
-        binding.txtTotalFee.setText("đ" + itemTotal);
-        binding.txtTotalTax.setText("đ" + tax);
-        binding.txtDelivery.setText("đ" + delivery);
-        binding.txtTotal.setText("đ" + total);
+        binding.txtTotalFee.setText(itemTotal + " đ");
+        binding.txtTotalTax.setText(tax + " đ");
+        binding.txtDelivery.setText(delivery + " đ");
+        binding.txtTotal.setText(total + " đ");
     }
 
     private void setVariable() {
@@ -86,5 +95,42 @@ public class CartActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void loadDataAddress() {
+
+        address = new ArrayList<>();
+        address.add("Tỉnh/Thành phố");
+        address.add("TP. Hồ Chí Minh");
+        address.add("Tp. Hà Nội");
+        address.add("Cần Thơ");
+        address.add("Bình Dương");
+        address.add("An Giang");
+        address.add("Thủ Đức");
+        address.add("Đà Nẵng");
+        address.add("Đồng Tháp");
+        address.add("Tiền Giang");
+        address.add("Long An");
+        address.add("Đà Lạt");
+        address.add("Vũng Tàu");
+        address.add("Kiên Giang");
+        address.add("Sóc Trăng");
+        address.add("Long Xuyên");
+
+        adapter = new ArrayAdapter<>(CartActivity.this, android.R.layout.simple_list_item_1, address);
+
+        binding.spAddress.setAdapter(adapter);
+    }
+
+    private void loadDataPayment() {
+        payment = new ArrayList<>();
+        payment.add("Chọn phương thức");
+        payment.add("Tiền mặt (COD)");
+        payment.add("Thanh toán qua ngân hàng");
+        payment.add("Thanh toán qua ví điện tử");
+
+        adapter = new ArrayAdapter<>(CartActivity.this, android.R.layout.simple_list_item_1, payment);
+
+        binding.spPayment.setAdapter(adapter);
     }
 }
