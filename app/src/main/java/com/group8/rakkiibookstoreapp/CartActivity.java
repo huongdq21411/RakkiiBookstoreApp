@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +51,13 @@ public class CartActivity extends AppCompatActivity {
         statusBarColor();
         loadDataAddress();
         loadDataPayment();
+
+        binding.btnOrderNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CartActivity.this, "Bạn đã đặt hàng thành công!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void statusBarColor() {
