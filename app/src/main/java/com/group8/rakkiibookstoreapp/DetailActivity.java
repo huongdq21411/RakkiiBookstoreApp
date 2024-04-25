@@ -1,5 +1,6 @@
 package com.group8.rakkiibookstoreapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -50,7 +51,22 @@ public class DetailActivity extends AppCompatActivity {
             NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
             DecimalFormat decimalFormat = (DecimalFormat)nf;
             String formattedPrice = decimalFormat.format(((BookList) object).getPrice());
-            binding.txtPrice.setText(formattedPrice + " đ");
+            binding.txtCategory.setText(((BookList) object).getCategory());
+        binding.txtCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lấy mã thể loại từ TextView
+                String categoryText = binding.txtCategory.getText().toString();
+                String categoryCode = getCategoryCodeForCategoryText(categoryText);
+
+                // Tạo intent để chuyển đến màn hình danh sách sản phẩm và truyền mã thể loại
+                Intent intent = new Intent(DetailActivity.this, ProductListActivity.class);
+                intent.putExtra("category", categoryCode);
+                startActivity(intent);
+            }
+        });
+
+        binding.txtPrice.setText(formattedPrice + " đ");
             binding.txtDescription.setText(((BookList) object).getDescription());
             binding.txtReviews.setText(((BookList) object).getReview()+"");
             binding.txtRating.setText(((BookList) object).getScore()+"");
@@ -60,5 +76,22 @@ public class DetailActivity extends AppCompatActivity {
             });
 
         binding.imvBack.setOnClickListener(v -> finish());
+    }
+    private String getCategoryCodeForCategoryText(String categoryText) {
+        // Thực hiện logic để ánh xạ từ văn bản thể loại sang mã thể loại tương ứng
+
+        if (categoryText.equals("Văn học")) {
+            return "cat1";
+        } else if (categoryText.equals("Kinh tế")) {
+            return "cat2";
+        } else if (categoryText.equals("Tâm lý - Kỹ Năng")) {
+            return "cat3";
+        } else if (categoryText.equals("Sách thiếu nhi")) {
+            return "cat4";
+        } else if (categoryText.equals("Giáo khoa - Tham khảo")) {
+            return "cat5";
+        } else {
+            return "defaultCategoryCode"; // Trả về một giá trị mặc định nếu không có sự tương ứng
+        }
     }
 }
