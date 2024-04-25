@@ -60,7 +60,7 @@
                         android:layout_marginEnd="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_notifications_24" />
+                        app:srcCompat="@drawable/baseline_notifications_24"/>
 
                     <ImageView
                         android:id="@+id/imvRedCircle"
@@ -70,7 +70,7 @@
                         app:layout_constraintEnd_toEndOf="@id/imvBell"
                         app:layout_constraintStart_toEndOf="@id/imvBell"
                         app:layout_constraintTop_toTopOf="@id/imvBell"
-                        app:srcCompat="@drawable/red_circle" />
+                        app:srcCompat="@drawable/baseline_circle_24" />
 
                     <TextView
                         android:id="@+id/NumNoti"
@@ -94,7 +94,7 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/edittext_background"
-                    android:drawableStart="@drawable/search_icon"
+                    android:drawableStart="@drawable/baseline_magnify_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
                     android:hint="Tìm kiếm..."
@@ -106,6 +106,7 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Banner"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_marginStart="24dp"
@@ -294,7 +295,6 @@
                         android:id="@+id/imvCat6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         app:srcCompat="@drawable/cat6" />
 
                     <TextView
@@ -496,7 +496,7 @@
             android:id="@+id/imvQR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/qrcode"
+            android:src="@drawable/baseline_qrcode_scan_24"
             app:backgroundTint="@color/purple_Dark"
             app:layout_anchor="@+id/appBar"
             app:layout_anchorGravity="top|center"

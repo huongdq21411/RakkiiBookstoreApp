@@ -178,6 +178,11 @@ public class Dashboard extends AppCompatActivity {
             intent.putExtra("category", "nocat");
             startActivity(intent);
         });
+        binding.Banner.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "nocat");
+            startActivity(intent);
+        });
         binding.textView3.setOnClickListener(v -> {
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
             intent.putExtra("category", "nocat");

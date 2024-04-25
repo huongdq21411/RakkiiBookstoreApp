@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
 import com.group8.rakkiibookstoreapp.databinding.ActivitySignupBinding;
+import com.group8.rakkiibookstoreapp.helper.Login_Signup;
 
 public class SignupActivity extends AppCompatActivity {
     ActivitySignupBinding binding;
@@ -41,8 +42,8 @@ public class SignupActivity extends AppCompatActivity {
                 String username = binding.signupUsername.getText().toString();
                 String password = binding.signupPassword.getText().toString();
 
-                HelperClass helperClass = new HelperClass(name, email, username, password);
-                reference.child(username).setValue(helperClass);
+                Login_Signup login_signup = new Login_Signup(name, email, username, password);
+                reference.child(username).setValue(login_signup);
 
                 Toast.makeText(SignupActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SignupActivity.this, LoginActivity.class);

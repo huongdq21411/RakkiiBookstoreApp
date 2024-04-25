@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="50 view"
+            android:text="50 Lượt xem"
             android:textColor="@color/purple_Dark"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@+id/star"
