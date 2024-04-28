@@ -35,11 +35,23 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         showUserData();
+        logOut();
 
         binding.btnEditProf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 passUserData();
+            }
+        });
+    }
+
+    private void logOut() {
+        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                startActivity(intent);
+
             }
         });
     }
