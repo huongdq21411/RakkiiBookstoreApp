@@ -1,11 +1,10 @@
 package com.group8.rakkiibookstoreapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,64 +12,41 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.group8.rakkiibookstoreapp.adapter.BlogAdapter;
-import com.group8.rakkiibookstoreapp.database.BlogDatabase;
 import com.group8.rakkiibookstoreapp.databinding.ActivityBlogBinding;
+import com.group8.rakkiibookstoreapp.databinding.ActivityBlogDetailBinding;
 import com.group8.rakkiibookstoreapp.model.Blog;
 
 import java.util.ArrayList;
 
-public class BlogActivity extends AppCompatActivity {
+public class BlogDetailActivity extends AppCompatActivity {
 
-    ActivityBlogBinding binding;
-    BlogAdapter blogAdapter;
-    ArrayList<Blog> blogs;
+    ActivityBlogDetailBinding binding;
+    private ArrayList<Blog> blogs;
+    private TextView txtBlogContent;
 
-    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
 
-        binding = ActivityBlogBinding.inflate(getLayoutInflater());
+        binding = ActivityBlogDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        EdgeToEdge.enable(this);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+
         });
 
-        binding.imvBack.setOnClickListener(v -> finish());
-
-        initData();
-        loadData();
-
-        binding.lvBlog.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.imvBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Lấy đối tượng Blog được chọn
-                Blog selectedBlog = (Blog) parent.getItemAtPosition(position);
-
-                // Lấy giá trị id của Blog được chọn
-                int selectedBlogId = selectedBlog.getBlogId();
-
-                // Tạo Intent để mở trang blogdetail
-                Intent intent = new Intent(getApplicationContext(), BlogDetailActivity.class);
-
-                // Truyền giá trị id của Blog được chọn thông qua Intent
-                intent.putExtra("blog", selectedBlogId);
-
-                // Chạy Intent để mở trang blogdetail
-                startActivity(intent);
+            public void onClick(View v) {
+                finish();
             }
         });
 
-    }
-
-
-    private void initData() {
         blogs = new ArrayList<>();
 
         blogs.add(new Blog(R.drawable.blog1, 1, "Vì sao nên đọc sách?", "Khám phá sâu hơn vào giá trị và lợi ích của việc đọc sách, blog sẽ mang lại sự thúc đẩy để mọi người dành thời gian và nỗ lực cho việc đọc sách.", 50.0, "29/4/2024"));
@@ -81,12 +57,72 @@ public class BlogActivity extends AppCompatActivity {
         blogs.add(new Blog(R.drawable.blog6, 6, "Hành trình khám phá thế giới qua trang sách", "Khám phá thế giới qua sách, chia sẻ những trải nghiệm du lịch, hành trình và những câu chuyện thú vị liên quan đến sách và đọc.", 12.0, "29/4/2024"));
         blogs.add(new Blog(R.drawable.blog7, 7, "Học hỏi từ những cuốn sách của những người thành công", "Khám phá những cuốn sách được viết bởi những người thành công và mang đến những bài học, nguồn cảm hứng và phương pháp để áp dụng vào cuộc sống và đạt được thành công.", 18.0, "29/4/2024"));
         blogs.add(new Blog(R.drawable.blog8, 8, "Hành trình khám phá văn hóa và tri thức", "Khám phá các thể loại sách khác nhau từ khắp nơi trên thế giới và mang đến cái nhìn sâu sắc về văn hóa, tri thức và những cảm nhận cá nhân về từng tác phẩm.", 6.0, "29/4/2024"));
+
+
+        // Nhận dữ liệu từ Intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            // Lấy giá trị id của Blog được chọn từ Intent
+            int selectedBlogId = intent.getIntExtra("blog", -1);
+
+            // Tìm bài viết được chọn trong danh sách blogs
+            Blog selectedBlog = findBlogById(selectedBlogId);
+
+            // Hiển thị nội dung bài viết trong TextView
+            if (selectedBlog != null) {
+                binding.txtBlogTitle.setText(selectedBlog.getBlogTitle());
+                binding.txtBlogTime.setText(selectedBlog.getBlogTime());
+                binding.txtView.setText(String.valueOf(selectedBlog.getBlogView() + " Lượt xem"));
+                binding.txtBlogContent.setText(selectedBlog.getBlogContent());
+                binding.imvBlog.setImageResource(selectedBlog.getBlogPhoto());
+            }
+        }
+
+        txtBlogContent = findViewById(R.id.txtBlogContent);
+
+        Intent intentblog = getIntent();
+        if (intentblog != null) {
+            int selectedBlogId = intentblog.getIntExtra("blog", -1);
+            String blogContent = getBlogContentById(selectedBlogId);
+            if (blogContent != null) {
+                txtBlogContent.setText(blogContent);
+            }
+        }
     }
 
-    private void loadData() {
-        initData();
-        blogAdapter = new BlogAdapter(BlogActivity.this, R.layout.item_blog, blogs);
-        binding.lvBlog.setAdapter(blogAdapter);
+    private String getBlogContentById(int blogId) {
+        switch (blogId) {
+            case 1:
+                return getString(R.string.blogcontent1);
+            case 2:
+                return getString(R.string.blogcontent2);
+            case 3:
+                return getString(R.string.blogcontent3);
+            case 4:
+                return getString(R.string.blogcontent4);
+            case 5:
+                return getString(R.string.blogcontent5);
+            case 6:
+                return getString(R.string.blogcontent6);
+            case 7:
+                return getString(R.string.blogcontent7);
+            case 8:
+                return getString(R.string.blogcontent8);
+            default:
+                return null;
+        }
     }
+
+
+
+    private Blog findBlogById(int blogId) {
+        for (Blog blog : blogs) {
+            if (blog.getBlogId() == blogId) {
+                return blog;
+            }
+        }
+        return null;
+    }
+
 
 }

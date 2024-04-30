@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
@@ -49,27 +50,48 @@
 
         <ImageView
             android:id="@+id/star"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:src="@drawable/baseline_preview_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtBlogTitle" />
 
         <TextView
             android:id="@+id/txtView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
             android:text="50 Lượt xem"
             android:textColor="@color/purple_Dark"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@+id/star"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/star"
             app:layout_constraintTop_toBottomOf="@id/txtBlogTitle" />
+
+        <ImageView
+            android:id="@+id/time"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/baseline_access_time_24"
+            app:layout_constraintBottom_toBottomOf="@+id/txtView"
+            app:layout_constraintStart_toEndOf="@+id/txtView"
+            app:layout_constraintTop_toTopOf="@+id/txtView" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="dd/mm/yyyy"
+            android:textColor="@color/purple_Dark"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/time"
+            app:layout_constraintStart_toEndOf="@+id/time"
+            app:layout_constraintTop_toTopOf="@+id/time" />
 
         <TextView
             android:id="@+id/txtDescription"
@@ -81,7 +103,7 @@
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtView" />
+            app:layout_constraintTop_toBottomOf="@id/star" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
