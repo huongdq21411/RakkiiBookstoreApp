@@ -1,11 +1,7 @@
 package com.group8.rakkiibookstoreapp.adapter;
 
-
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,13 +10,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
 import com.group8.rakkiibookstoreapp.DetailActivity;
 import com.group8.rakkiibookstoreapp.R;
-import com.group8.rakkiibookstoreapp.databinding.ItemLayoutBinding;
+import com.group8.rakkiibookstoreapp.databinding.WishlistLayoutBinding;
 import com.group8.rakkiibookstoreapp.helper.ManagmentCart;
 import com.group8.rakkiibookstoreapp.helper.WishList;
 import com.group8.rakkiibookstoreapp.model.BookList;
@@ -30,25 +24,24 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewholder> {
+public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.Viewholder> {
     ArrayList<BookList> items;
+    WishlistLayoutBinding binding;
     Context context;
-    ItemLayoutBinding binding;
     ManagmentCart managmentCart;
     WishList wishList;
     private int numberOrder = 1;
+    OnDataSetChangedListener onDataSetChangedListener;
 
-
-
-    public BookListAdapter(ArrayList<BookList> items) {
+    public WishListAdapter(ArrayList<BookList> items, OnDataSetChangedListener onDataSetChangedListener) {
         this.items = items;
+        this.onDataSetChangedListener = onDataSetChangedListener;
     }
-
 
     @NonNull
     @Override
-    public BookListAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+    public WishListAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        binding = WishlistLayoutBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
         context = parent.getContext();
         managmentCart = new ManagmentCart(context);
         wishList = new WishList(context);
@@ -56,7 +49,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookListAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull WishListAdapter.Viewholder holder, int position) {
         BookList item = items.get(position);
 
         String title = item.getTitle();
@@ -71,7 +64,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
         holder.setThumb(picUrl);
 
         holder.setAddToCart(item);
-        holder.setAddtoWishlist(item, position);
+        holder.setRemoveFromWishlist(item);
 
         ConstraintLayout itemContent = holder.itemView.findViewById(R.id.itemContent);
         itemContent.setOnClickListener(new View.OnClickListener() {
@@ -89,13 +82,24 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
         return items.size();
     }
 
-    public class Viewholder extends RecyclerView.ViewHolder{
-        private final ItemLayoutBinding binding;
-        public Viewholder(ItemLayoutBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
+    public interface OnDataSetChangedListener {
+        void onDataSetChanged(int newCount);
+    }
+    public void dataSetChanged() {
+        notifyDataSetChanged();
+        if (onDataSetChangedListener != null) {
+            onDataSetChangedListener.onDataSetChanged(getItemCount());
         }
+    }
+    public void setOnDataSetChangedListener(OnDataSetChangedListener listener) {
+        this.onDataSetChangedListener = listener;
+    }
 
+    public class Viewholder extends RecyclerView.ViewHolder {
+
+        public Viewholder(WishlistLayoutBinding binding) {
+            super(binding.getRoot());
+        }
         public void setTitle(String title) {
             int maxLines = 3;
             binding.txtTitle.setText(title);
@@ -128,32 +132,23 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
                 managmentCart.insertFood(object);
             });
         }
-        public void setAddtoWishlist(BookList object, int position) {
-            ArrayList<BookList> listpop = wishList.getWishList();
-            binding.btnLike.setOnClickListener(v -> {
-                boolean isLiked = !object.isLiked();
-                object.setLiked(isLiked);
-                notifyItemChanged(position);
-                int defaultColor = ContextCompat.getColor(v.getContext(), R.color.unliked);
-                int newColor = ContextCompat.getColor(v.getContext(), R.color.liked);
-                int new_iconResId = v.getResources().getIdentifier("baseline_bookmark_24", "drawable", v.getContext().getPackageName());
-                Drawable new_icon = v.getResources().getDrawable(new_iconResId, null);
-                int iconResId = v.getResources().getIdentifier("baseline_bookmark_border_24", "drawable", v.getContext().getPackageName());
-                Drawable icon = v.getResources().getDrawable(iconResId, null);
+        public void setRemoveFromWishlist(BookList object) {
+            int position = items.indexOf(object);
+            if (position != -1) {
+                binding.btnDelete.setOnClickListener(v -> {
+                    ArrayList<BookList> listpop = wishList.getWishList();
+                    if (!listpop.isEmpty()) {
+                        wishList.removefromWishlist(listpop, position);
+                        notifyItemRemoved(position);
+                        int range = listpop.isEmpty() ? 0 : Math.max(1, listpop.size() - position);
+                        notifyItemRangeChanged(position, range);
 
-                if (isLiked) {
-                    ((MaterialButton) binding.btnLike).setIcon(new_icon);
-                    binding.btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(newColor));
-                    wishList.addtoWishlist(object);
-                    notifyItemInserted(position);
-                } else {
-                    ((MaterialButton) binding.btnLike).setIcon(icon);
-                    binding.btnLike.setCompoundDrawableTintList(ColorStateList.valueOf(defaultColor));
-                    wishList.removefromWishlist(listpop, position);
-                    notifyItemRemoved(position);
-                }
-                notifyDataSetChanged();
-            });
+                        if (onDataSetChangedListener != null) {
+                            onDataSetChangedListener.onDataSetChanged(getItemCount());
+                        }
+                    }
+                });
+            }
         }
     }
 }

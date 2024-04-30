@@ -77,6 +77,7 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
         return items.size();
     }
 
+
     public class Viewholder extends RecyclerView.ViewHolder{
         public Viewholder(ViewholderPupListBinding binding) {
             super(binding.getRoot());

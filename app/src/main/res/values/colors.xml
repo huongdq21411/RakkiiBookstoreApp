@@ -3,9 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="purple_Dark">#521C98</color>
-    <color name="purple_light">#6f21d2</color>
+    <color name="purple_light">#6F21F2</color>
     <color name="purple_lavender">#9773e4</color>
     <color name="grey">#7A7A7A</color>
     <color name="liked">#8B6A1B9A</color>
     <color name="unliked">#737373</color>
+    <color name="liked_d">#000000</color>
+    <color name="unliked_d">#000000</color>
 </resources>

@@ -12,6 +12,8 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -34,6 +36,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.group8.rakkiibookstoreapp.adapter.BookListAdapter;
 import com.group8.rakkiibookstoreapp.adapter.PopularProductAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
 import com.group8.rakkiibookstoreapp.model.BookList;
@@ -42,6 +45,7 @@ import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -49,6 +53,7 @@ public class Dashboard extends AppCompatActivity {
     ActivityDashboardBinding binding;
     String nameUser, emailUser, usernameUser, passwordUser;
     boolean isReady = false;
+    private ArrayList<BookList> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,7 @@ public class Dashboard extends AppCompatActivity {
         bottomNavigation_cart();
         bottomNavigation_profile();
         bottomNavigation_blog();
+
         binding.imvQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +84,8 @@ public class Dashboard extends AppCompatActivity {
         });
         showHello();
     }
+
+
 
     private void showHello() {
         Intent intent = getIntent();
@@ -156,6 +164,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
+
         ArrayList<BookList> items = new ArrayList<>();
         items.add(new BookList(1, "Văn học", "Cây cam ngọt của tôi", "item_1", 7, 4, 108000, "“Vị chua chát của cái nghèo hòa trộn với vị ngọt ngào khi khám phá ra những điều khiến cuộc đời này đáng số một tác phẩm kinh điển của Brazil.” - Booklist\nHãy làm quen với Zezé, cậu bé tinh nghịch siêu hạng đồng thời cũng đáng yêu bậc nhất, với ước mơ lớn lên trở thành nhà thơ cổ thắt nơ bướm. Chẳng phải ai cũng công nhận khoản “đáng yêu” kia đâu nhé. Bởi vì, ở cái xóm ngoại ô nghèo ấy, nỗi khắc khổ bủa vây đã che mờ mắt người ta trước trái tim thiện lương cùng trí tưởng tượng tuyệt vời của cậu bé con năm tuổi."));
         items.add(new BookList(2, "Văn học", "Mãi mãi là bao xa - Tái bản 2019", "item_2", 3, 5, 94000, "Em là cây hoa loa kèn hoang dã mãi mãi chỉ vì chính mình mà nở hoa, rời khỏi đất mẹ là cái giá phải trả khi yêu anh.\"\"\nBạch Lăng Lăng, nữ sinh khoa Điện khí, trẻ trung, xinh đẹp và rất tự hào khi quen được một người bạn lý tưởng qua mạng, chàng du học sinh của một trường nổi tiếng của Mỹ, người mang biệt danh “nhà khoa học”: Mãi Mãi Là Bao Xa. Qua những cuộc chuyện trò trên QQ, Lăng Lăng đã gắn bó với chàng trai đó lúc nào cô cũng không hay, cảm xúc lớn dần, sự chia sẻ lớn dần và đến một ngày cô phát hiện ra mình đã yêu người con trai “tài giỏi” và không một chút khuyết điểm ấy."));
@@ -165,6 +174,7 @@ public class Dashboard extends AppCompatActivity {
                 LinearLayoutManager.HORIZONTAL,false));
         binding.rvPopular.setAdapter(new PopularProductAdapter(items));
     }
+
 
     private void addEvents() {
         binding.imvCat1.setOnClickListener(v -> {
@@ -206,6 +216,14 @@ public class Dashboard extends AppCompatActivity {
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
             intent.putExtra("category", "nocat");
             startActivity(intent);
+        });
+        binding.btnBuyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+                intent.putExtra("category", "cat1");
+                startActivity(intent);
+            }
         });
     }
 
