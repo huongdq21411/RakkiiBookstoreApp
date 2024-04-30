@@ -34,23 +34,9 @@ public class WishList {
         tinyDB.putListObject("WishList",listpop);
         Toast.makeText(context, "Đã thêm vào Yêu thích", Toast.LENGTH_SHORT).show();
     }
-    public void removefromWishlist(BookList item) {
-        ArrayList<BookList> listpop = getWishList();
-        boolean existAlready = false;
-        int n = 0;
-        for (int i = 0; i < listpop.size(); i++) {
-            if (listpop.get(i).getTitle().equals(item.getTitle())) {
-                existAlready = true;
-                n = i;
-                break;
-            }
-        }
-        if(!existAlready){
-            listpop.get(n).setNumberInCart(item.getNumberInCart());
-        }else{
-            listpop.remove(item);
-        }
-        tinyDB.putListObject("WishList",listpop);
+    public void removefromWishlist(ArrayList<BookList> item, int position) {
+        item.remove(position);
+        tinyDB.putListObject("WishList",item);
         Toast.makeText(context, "Đã bỏ khỏi Yêu thích", Toast.LENGTH_SHORT).show();
     }
     public ArrayList<BookList> getWishList() {
