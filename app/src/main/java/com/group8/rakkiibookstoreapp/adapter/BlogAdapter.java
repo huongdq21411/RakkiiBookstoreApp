@@ -54,7 +54,7 @@ public class BlogAdapter extends BaseAdapter {
         TextView Description = convertView.findViewById(R.id.txtDescription);
         Description.setText(blogs.get(position).getBlogDescription());
         TextView View = convertView.findViewById(R.id.txtView);
-        View.setText(String.valueOf(blogs.get(position).getBlogView()) + " view");
+        View.setText(String.valueOf(blogs.get(position).getBlogView()) + " Lượt xem");
 
         return convertView;
     }

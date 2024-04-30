@@ -38,7 +38,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/star" />
+            app:srcCompat="@drawable/baseline_star_24" />
 
         <TextView
             android:id="@+id/txtScore"
@@ -89,7 +89,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/review" />
+        app:srcCompat="@drawable/baseline_message_text_24" />
 
     <TextView
         android:id="@+id/txtReview"

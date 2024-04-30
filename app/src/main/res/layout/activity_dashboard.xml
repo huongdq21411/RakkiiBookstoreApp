@@ -36,7 +36,7 @@
                         android:id="@+id/txtWelcome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Welcome"
+                        android:text="Chào mừng"
                         android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -60,7 +60,7 @@
                         android:layout_marginEnd="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_notifications_24" />
+                        app:srcCompat="@drawable/baseline_notifications_24"/>
 
                     <ImageView
                         android:id="@+id/imvRedCircle"
@@ -70,23 +70,40 @@
                         app:layout_constraintEnd_toEndOf="@id/imvBell"
                         app:layout_constraintStart_toEndOf="@id/imvBell"
                         app:layout_constraintTop_toTopOf="@id/imvBell"
-                        app:srcCompat="@drawable/red_circle" />
+                        app:srcCompat="@drawable/baseline_circle_24" />
 
-                    <TextView
-                        android:id="@+id/NumNoti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        app:layout_constraintEnd_toEndOf="@id/imvRedCircle"
-                        app:layout_constraintStart_toStartOf="@id/imvRedCircle"
-                        app:layout_constraintTop_toTopOf="@id/imvRedCircle" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/NumNoti"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="1"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="11sp"-->
+<!--                        app:layout_constraintEnd_toEndOf="@id/imvRedCircle"-->
+<!--                        app:layout_constraintStart_toStartOf="@id/imvRedCircle"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/imvRedCircle" />-->
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <EditText
-                    android:id="@+id/edtSearch"
+<!--                <EditText-->
+<!--                    android:id="@+id/edtSearch"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="24dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginEnd="24dp"-->
+<!--                    android:layout_marginBottom="24dp"-->
+<!--                    android:background="@drawable/edittext_background"-->
+<!--                    android:drawableStart="@drawable/baseline_magnify_24"-->
+<!--                    android:drawablePadding="8dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="Tìm kiếm..."-->
+<!--                    android:inputType="text"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:textColor="#9aa2aa"-->
+<!--                    android:textSize="16sp" />-->
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="24dp"
@@ -94,18 +111,20 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/edittext_background"
-                    android:drawableStart="@drawable/search_icon"
+                    android:drawableStart="@drawable/baseline_magnify_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
-                    android:hint="Tìm kiếm..."
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#9aa2aa"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:queryHint="Tìm kiếm..."
+                    app:iconifiedByDefault="false"/>
 
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Banner"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_marginStart="24dp"
@@ -294,7 +313,6 @@
                         android:id="@+id/imvCat6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         app:srcCompat="@drawable/cat6" />
 
                     <TextView
@@ -496,7 +514,7 @@
             android:id="@+id/imvQR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/qrcode"
+            android:src="@drawable/baseline_qrcode_scan_24"
             app:backgroundTint="@color/purple_Dark"
             app:layout_anchor="@+id/appBar"
             app:layout_anchorGravity="top|center"

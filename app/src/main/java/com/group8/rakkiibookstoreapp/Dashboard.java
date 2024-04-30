@@ -1,21 +1,33 @@
 package com.group8.rakkiibookstoreapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,17 +36,24 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.group8.rakkiibookstoreapp.adapter.BookListAdapter;
 import com.group8.rakkiibookstoreapp.adapter.PopularProductAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityDashboardBinding;
 import com.group8.rakkiibookstoreapp.model.BookList;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dashboard extends AppCompatActivity {
 
+    private static final int REQUEST_CODE_SELECT_IMAGE = 1;
     ActivityDashboardBinding binding;
     String nameUser, emailUser, usernameUser, passwordUser;
     boolean isReady = false;
+    private ArrayList<BookList> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +75,17 @@ public class Dashboard extends AppCompatActivity {
         bottomNavigation_cart();
         bottomNavigation_profile();
         bottomNavigation_blog();
-        startQRScanner();
+
+        binding.imvQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startQRScanner();
+            }
+        });
         showHello();
     }
+
+
 
     private void showHello() {
         Intent intent = getIntent();
@@ -137,6 +164,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
+
         ArrayList<BookList> items = new ArrayList<>();
         items.add(new BookList(1, "Văn học", "Cây cam ngọt của tôi", "item_1", 7, 4, 108000, "“Vị chua chát của cái nghèo hòa trộn với vị ngọt ngào khi khám phá ra những điều khiến cuộc đời này đáng số một tác phẩm kinh điển của Brazil.” - Booklist\nHãy làm quen với Zezé, cậu bé tinh nghịch siêu hạng đồng thời cũng đáng yêu bậc nhất, với ước mơ lớn lên trở thành nhà thơ cổ thắt nơ bướm. Chẳng phải ai cũng công nhận khoản “đáng yêu” kia đâu nhé. Bởi vì, ở cái xóm ngoại ô nghèo ấy, nỗi khắc khổ bủa vây đã che mờ mắt người ta trước trái tim thiện lương cùng trí tưởng tượng tuyệt vời của cậu bé con năm tuổi."));
         items.add(new BookList(2, "Văn học", "Mãi mãi là bao xa - Tái bản 2019", "item_2", 3, 5, 94000, "Em là cây hoa loa kèn hoang dã mãi mãi chỉ vì chính mình mà nở hoa, rời khỏi đất mẹ là cái giá phải trả khi yêu anh.\"\"\nBạch Lăng Lăng, nữ sinh khoa Điện khí, trẻ trung, xinh đẹp và rất tự hào khi quen được một người bạn lý tưởng qua mạng, chàng du học sinh của một trường nổi tiếng của Mỹ, người mang biệt danh “nhà khoa học”: Mãi Mãi Là Bao Xa. Qua những cuộc chuyện trò trên QQ, Lăng Lăng đã gắn bó với chàng trai đó lúc nào cô cũng không hay, cảm xúc lớn dần, sự chia sẻ lớn dần và đến một ngày cô phát hiện ra mình đã yêu người con trai “tài giỏi” và không một chút khuyết điểm ấy."));
@@ -146,6 +174,7 @@ public class Dashboard extends AppCompatActivity {
                 LinearLayoutManager.HORIZONTAL,false));
         binding.rvPopular.setAdapter(new PopularProductAdapter(items));
     }
+
 
     private void addEvents() {
         binding.imvCat1.setOnClickListener(v -> {
@@ -178,10 +207,23 @@ public class Dashboard extends AppCompatActivity {
             intent.putExtra("category", "nocat");
             startActivity(intent);
         });
+        binding.Banner.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+            intent.putExtra("category", "nocat");
+            startActivity(intent);
+        });
         binding.textView3.setOnClickListener(v -> {
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
             intent.putExtra("category", "nocat");
             startActivity(intent);
+        });
+        binding.btnBuyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
+                intent.putExtra("category", "cat1");
+                startActivity(intent);
+            }
         });
     }
 
@@ -196,20 +238,36 @@ public class Dashboard extends AppCompatActivity {
 
     // Hàm để bắt đầu quét mã QR
     private void startQRScanner() {
-        binding.imvQR.setOnClickListener(new View.OnClickListener() {
+        // Tạo danh sách các lựa chọn cho người dùng chọn giữa quét trực tiếp và tải ảnh từ máy
+        CharSequence[] options = {"Quét trực tiếp", "Tải ảnh từ máy"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Chọn phương thức quét");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                IntentIntegrator integrator = new IntentIntegrator(Dashboard.this);
-                integrator.setOrientationLocked(false);
-                integrator.initiateScan();
+            public void onClick(DialogInterface dialog, int item) {
+                if (options[item].equals("Quét trực tiếp")) {
+                    // Quét trực tiếp
+                    scanQRCode();
+                } else if (options[item].equals("Tải ảnh từ máy")) {
+                    // Tải ảnh từ máy để quét
+                    selectImageFromGallery();
+                }
             }
         });
+        builder.show();
+    }
+
+    private void scanQRCode() {
+        ScanOptions options = new ScanOptions();
+        options.setBeepEnabled(true);
+        options.setPrompt("Vui lòng đưa mã QR vào vùng quét mã!");
+        options.setCaptureActivity(CaptureAct.class);
+        barLauncher.launch(options);
     }
 
     // Xử lý kết quả quét mã QR
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+    ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
         if (result != null) {
             if (result.getContents() == null) {
                 // Nếu người dùng hủy quét
@@ -225,10 +283,70 @@ public class Dashboard extends AppCompatActivity {
                     Toast.makeText(this, "Kết quả không phải là một đường dẫn URL: " + scannedResult, Toast.LENGTH_SHORT).show();
                 }
             }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
+        }
+    });
+
+
+
+    private void selectImageFromGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_SELECT_IMAGE && resultCode == RESULT_OK && data != null) {
+            // Lấy URI của ảnh từ intent
+            Uri selectedImageUri = data.getData();
+            if (selectedImageUri != null) {
+                // Thực hiện quét ảnh từ máy
+                scanImage(selectedImageUri);
+            }
         }
     }
+
+    private void scanImage(Uri imageUri) {
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+            // Sử dụng thư viện ZXing để quét ảnh
+            BarcodeDetector detector = new BarcodeDetector.Builder(getApplicationContext())
+                    .setBarcodeFormats(Barcode.QR_CODE)
+                    .build();
+
+            if (!detector.isOperational()) {
+                Toast.makeText(this, "Không thể quét ảnh. Vui lòng thử lại.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+            SparseArray<Barcode> barcodes = detector.detect(frame);
+
+            if (barcodes.size() == 0) {
+                Toast.makeText(this, "Không tìm thấy mã QR trong ảnh.", Toast.LENGTH_SHORT).show();
+            } else {
+                Barcode scannedResult = barcodes.valueAt(0);
+                handleScanResult(scannedResult.displayValue);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Không thể quét ảnh. Vui lòng thử lại.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    // Xử lý kết quả sau khi quét ảnh hoặc QR code trực tiếp
+    private void handleScanResult(String scannedResult) {
+        if (isURL(scannedResult)) {
+            // Nếu là đường dẫn URL, mở trình duyệt web và hiển thị trang web
+            openWebPage(scannedResult);
+        } else {
+            // Nếu không phải là đường dẫn URL, thông báo không phải
+            Toast.makeText(this, "Kết quả không phải là một đường dẫn URL: " + scannedResult, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     // Hàm kiểm tra xem chuỗi có phải là một đường dẫn URL hay không
     private boolean isURL(String text) {

@@ -1,9 +1,9 @@
-package com.group8.rakkiibookstoreapp;
+package com.group8.rakkiibookstoreapp.helper;
 
-public class HelperClass {
+public class Login_Signup {
     String name, email, username, password;
 
-    public HelperClass(String name, String email, String username, String password) {
+    public Login_Signup(String name, String email, String username, String password) {
         this.name = name;
         this.email = email;
         this.username = username;

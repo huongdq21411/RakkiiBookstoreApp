@@ -314,21 +314,75 @@
 
     </LinearLayout>
 
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btnEditProf"-->
+<!--        style="@android:style/Widget.Button"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@drawable/btn_background"-->
+<!--        android:text="Sửa hồ sơ"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="18sp"-->
+<!--        app:cornerRadius="20dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/linearLayout"-->
+<!--        app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/linearLayout"-->
+<!--        app:layout_constraintVertical_bias="0.2" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btnLogout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:text="Đăng xuất"-->
+<!--        android:textSize="18sp"-->
+<!--        app:cornerRadius="20dp"-->
+<!--        android:layout_margin="24dp"-->
+<!--        style="@android:style/Widget.Button"-->
+<!--        android:background="@drawable/btn_background"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/linearLayout"-->
+<!--        app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/btnEditProf"/>-->
+        <!-- Your existing layout elements -->
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnEditProf"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:textColor="@color/white"
         android:text="Sửa hồ sơ"
         android:textSize="18sp"
         app:cornerRadius="20dp"
-        android:layout_margin="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="12dp"
         style="@android:style/Widget.Button"
         android:background="@drawable/btn_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="@id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@id/btnLogout"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogout"
+        style="@android:style/Widget.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/btn_background"
+        android:text="Đăng xuất"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnEditProf"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

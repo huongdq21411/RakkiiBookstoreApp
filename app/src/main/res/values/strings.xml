@@ -1,7 +1,31 @@
 <resources>
-    <string name="app_name">RakkiiBookstore</string>
+    <string name="app_name">Rakkii Bookstore</string>
     <string name="user_name">Tên đăng nhập</string>
     <string name="email">Email</string>
     <string name="name">Tên</string>
     <string name="pass">Mật khẩu</string>
+    <string-array name="address">
+        <item>TP. Hồ Chí Minh</item>
+        <item>Tp. Hà Nội</item>
+        <item>Cần Thơ</item>
+        <item>Bình Dương</item>
+        <item>An Giang</item>
+        <item>Thủ Đức</item>
+        <item>Đà Nẵng</item>
+        <item>Đồng Tháp</item>
+        <item>Tiền Giang</item>
+        <item>Long An</item>
+        <item>Đà Lạt</item>
+        <item>Vũng Tàu</item>
+        <item>Kiên Giang</item>
+        <item>Sóc Trăng</item>
+        <item>Long Xuyên</item>
+    </string-array>
+
+    <string-array name="payment">
+        <item>Tiền mặt (COD)</item>
+        <item>Thanh toán qua ngân hàng</item>
+        <item>Thanh toán qua vi điện tử</item>
+    </string-array>
+
 </resources>
