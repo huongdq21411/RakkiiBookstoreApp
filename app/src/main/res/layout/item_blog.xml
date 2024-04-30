@@ -7,7 +7,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:background="@drawable/grey_background"
-    android:backgroundTint="#79E6E6E6">
+    android:backgroundTint="@color/bookbackground">
 
     <ImageView
         android:id="@+id/imvBlog"
@@ -55,6 +55,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="6dp"
             android:src="@drawable/baseline_preview_24"
+            app:tint="@color/purple_Dark"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtBlogTitle" />
 
@@ -77,6 +78,7 @@
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/baseline_access_time_24"
+            app:tint="@color/purple_Dark"
             app:layout_constraintBottom_toBottomOf="@+id/txtView"
             app:layout_constraintStart_toEndOf="@+id/txtView"
             app:layout_constraintTop_toTopOf="@+id/txtView" />

@@ -38,7 +38,8 @@
                         android:padding="8dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_arrow_back_24" />
+                        app:srcCompat="@drawable/baseline_arrow_back_24"
+                        app:tint="@color/black"/>
 
                     <ImageView
                         android:id="@+id/imvBookMark"
@@ -61,7 +62,8 @@
                         app:layout_constraintBottom_toBottomOf="@+id/imvBookMark"
                         app:layout_constraintEnd_toStartOf="@+id/imvBookMark"
                         app:layout_constraintTop_toTopOf="@+id/imvBookMark"
-                        app:srcCompat="@drawable/baseline_share_24" />
+                        app:srcCompat="@drawable/baseline_share_24"
+                        app:tint="@color/black"/>
 
                     <View
                         android:id="@+id/view"
