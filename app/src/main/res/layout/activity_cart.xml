@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="Giỏ Hàng"
+                    android:text="Thanh toán"
                     android:textAlignment="center"
                     android:textColor="@color/purple_Dark"
                     android:textSize="25sp"

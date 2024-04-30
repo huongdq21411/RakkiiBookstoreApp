@@ -1,5 +1,6 @@
 package com.group8.rakkiibookstoreapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,20 +15,19 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.group8.rakkiibookstoreapp.adapter.BlogAdapter;
 import com.group8.rakkiibookstoreapp.adapter.CartAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityCartBinding;
+import com.group8.rakkiibookstoreapp.databinding.ActivityCartListBinding;
 import com.group8.rakkiibookstoreapp.helper.ChangeNumberItemsListener;
 import com.group8.rakkiibookstoreapp.helper.ManagmentCart;
 
 import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity {
+public class CartListActivity extends AppCompatActivity {
 
+    ActivityCartListBinding binding;
     private ManagmentCart managmentCart;
-    ActivityCartBinding binding;
     double tax;
-
     ArrayAdapter<String> adapter;
     ArrayList<String> address;
     ArrayList<String> payment;
@@ -36,34 +36,32 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        binding = ActivityCartBinding.inflate(getLayoutInflater());
+        binding = ActivityCartListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        managmentCart = new ManagmentCart(this);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         managmentCart = new ManagmentCart(this);
         setVariable();
         initList();
         calculatorCart();
         statusBarColor();
-        loadDataAddress();
-        loadDataPayment();
 
         binding.btnOrderNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CartActivity.this, "Bạn đã đặt hàng thành công!", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(CartListActivity
+                        .this, CartActivity.class));
             }
         });
+
     }
 
     private void statusBarColor() {
-        Window window = CartActivity.this.getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(CartActivity.this, R.color.purple_Dark));
+        Window window = CartListActivity.this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(CartListActivity.this, R.color.purple_Dark));
     }
 
     private void initList() {
@@ -85,15 +83,8 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void calculatorCart() {
-        double percentTax = 0.01;
-        double delivery = 10000;
-        tax = Math.round(managmentCart.getTotalFee() * percentTax * 100) / 100;
-
-        double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100) / 100;
-        double itemTotal = Math.round(managmentCart.getTotalFee()*100/100);
-        binding.txtTotalFee.setText(itemTotal + " đ");
-        binding.txtTotalTax.setText(tax + " đ");
-        binding.txtDelivery.setText(delivery + " đ");
+        double total = Math.round((managmentCart.getTotalFee()));
+        double itemTotal = Math.round(managmentCart.getTotalFee());
         binding.txtTotal.setText(total + " đ");
     }
 
@@ -104,42 +95,5 @@ public class CartActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
-
-    private void loadDataAddress() {
-
-        address = new ArrayList<>();
-        address.add("Tỉnh/Thành phố");
-        address.add("TP. Hồ Chí Minh");
-        address.add("Tp. Hà Nội");
-        address.add("An Giang");
-        address.add("Bình Dương");
-        address.add("Cần Thơ");
-        address.add("Đà Nẵng");
-        address.add("Đồng Tháp");
-        address.add("Đà Lạt");
-        address.add("Kiên Giang");
-        address.add("Long Xuyên");
-        address.add("Long An");
-        address.add("Sóc Trăng");
-        address.add("Thủ Đức");
-        address.add("Tiền Giang");
-        address.add("Vũng Tàu");
-
-        adapter = new ArrayAdapter<>(CartActivity.this, android.R.layout.simple_list_item_1, address);
-
-        binding.spAddress.setAdapter(adapter);
-    }
-
-    private void loadDataPayment() {
-        payment = new ArrayList<>();
-        payment.add("Chọn phương thức");
-        payment.add("Tiền mặt (COD)");
-        payment.add("Thanh toán qua ngân hàng");
-        payment.add("Thanh toán qua ví điện tử");
-
-        adapter = new ArrayAdapter<>(CartActivity.this, android.R.layout.simple_list_item_1, payment);
-
-        binding.spPayment.setAdapter(adapter);
     }
 }

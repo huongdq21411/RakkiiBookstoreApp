@@ -3,6 +3,7 @@ package com.group8.rakkiibookstoreapp.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -26,10 +27,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
     ViewholderCartBinding binding;
     ChangeNumberItemsListener changeNumberItemsListener;
     ManagmentCart managmentCart;
+    ArrayList<BookList> selectedItems;
 
     public CartAdapter(ArrayList<BookList> items, ChangeNumberItemsListener changeNumberItemsListener) {
         this.items = items;
         this.changeNumberItemsListener = changeNumberItemsListener;
+        this.selectedItems = new ArrayList<>();
     }
 
     @NonNull
@@ -61,6 +64,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
                 .transform(new GranularRoundedCorners(30, 30, 0, 0))
                 .into(binding.imvPhoto);
 
+//        // Kiểm tra xem sản phẩm đã được chọn hay chưa
+//        if (selectedItems.contains(items.get(position))) {
+//            binding.checkboxBook.setChecked(true);
+//        } else {
+//            binding.checkboxBook.setChecked(false);
+//        }
+//
+//        binding.checkboxBook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (binding.checkboxBook.isChecked()) {
+//                    selectedItems.add(items.get(position));
+//                } else {
+//                    selectedItems.remove(items.get(position));
+//                }
+//            }
+//        });
+
         binding.txtPlusCart.setOnClickListener(v -> managmentCart.plusNumberItem(items, position, () -> {
             notifyDataSetChanged();
             changeNumberItemsListener.change();
@@ -75,6 +96,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public ArrayList<BookList> getSelectedItems() {
+        return selectedItems;
     }
 
     public class Viewholder extends RecyclerView.ViewHolder {

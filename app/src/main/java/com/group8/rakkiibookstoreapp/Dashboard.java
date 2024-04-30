@@ -115,7 +115,7 @@ public class Dashboard extends AppCompatActivity {
         binding.btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, CartActivity.class));
+                startActivity(new Intent(Dashboard.this, CartListActivity.class));
             }
         });
     }
