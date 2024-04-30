@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
-            app:srcCompat="@drawable/baseline_arrow_back_24" />
+            app:srcCompat="@drawable/baseline_arrow_back_24"
+            app:tint="@color/black"/>
 
     </FrameLayout>
 
