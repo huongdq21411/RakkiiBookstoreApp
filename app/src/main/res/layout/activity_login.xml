@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:textColor="@color/white"
+                android:textColor="@color/unchanged"
                 android:text="Đăng nhập"
                 android:textSize="18sp"
                 app:cornerRadius="20dp"

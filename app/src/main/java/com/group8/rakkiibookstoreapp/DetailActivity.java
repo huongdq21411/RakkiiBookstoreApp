@@ -96,9 +96,9 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
+                intent.setType("text/plain"); // Use "text/plain" to ensure compatibility
                 String body = ((BookList) object).getTitle() + " giảm giá 20% tại RakkiiBookstore";
-                String sub = "Mua ngay tại https://github.com/huongdq21411/RakkiiBookstoreApp/";
+                String sub = "Mua ngay tại https://webapp.diawi.com/install/HDfyzY";
                 String fullMessage = body + "\n\n" + sub;
                 intent.putExtra(Intent.EXTRA_TEXT, fullMessage);
                 startActivity(Intent.createChooser(intent, "Chia sẻ qua:"));

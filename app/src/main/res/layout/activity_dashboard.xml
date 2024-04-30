@@ -37,7 +37,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Chào mừng"
-                        android:textColor="@color/white"
+                        android:textColor="@color/unchanged"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +46,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nguyễn Trúc"
-                        android:textColor="@color/white"
+                        android:textColor="@color/unchanged"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/txtWelcome"
                         app:layout_constraintTop_toBottomOf="@id/txtWelcome" />
@@ -58,6 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
+                        app:tint="@color/unchanged"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/baseline_notifications_24"/>
@@ -150,7 +151,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:text="Giảm giá 20% \nSách Văn Học"
-                    android:textColor="@color/white"
+                    android:textColor="@color/unchanged"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -164,7 +165,7 @@
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/purple_background"
                     android:text="Mua ngay"
-                    android:textColor="@color/white"
+                    android:textColor="@color/unchanged"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtDiscount" />
@@ -313,7 +314,8 @@
                         android:id="@+id/imvCat6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/cat6" />
+                        app:srcCompat="@drawable/cat6"
+                        android:alpha="0.8"/>
 
                     <TextView
                         android:id="@+id/txtCat6"
