@@ -10,13 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
-import com.group8.rakkiibookstoreapp.adapter.BookListAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityDetailBinding;
 import com.group8.rakkiibookstoreapp.helper.ManagmentCart;
 import com.group8.rakkiibookstoreapp.helper.WishList;
 import com.group8.rakkiibookstoreapp.model.BookList;
 
-import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -92,6 +90,18 @@ public class DetailActivity extends AppCompatActivity {
                     binding.imvBookMark.setColorFilter(defaultColor, PorterDuff.Mode.SRC_IN);
                     wishList.removefromWishlist(listpop, listpop.indexOf(object));
                 }
+            }
+        });
+        binding.imvShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String body = ((BookList) object).getTitle() + " giảm giá 20% tại RakkiiBookstore";
+                String sub = "Mua ngay tại https://github.com/huongdq21411/RakkiiBookstoreApp/";
+                String fullMessage = body + "\n\n" + sub;
+                intent.putExtra(Intent.EXTRA_TEXT, fullMessage);
+                startActivity(Intent.createChooser(intent, "Chia sẻ qua:"));
             }
         });
 
