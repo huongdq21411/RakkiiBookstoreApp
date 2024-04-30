@@ -28,21 +28,20 @@ import com.group8.rakkiibookstoreapp.model.BookList;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewholder> {
-    ArrayList<BookList> items;
+    private List<BookList> items;
     Context context;
     ItemLayoutBinding binding;
     private ManagmentCart managmentCart;
     private WishList wishList;
     private int numberOrder = 1;
 
-
     public BookListAdapter(ArrayList<BookList> items) {
         this.items = items;
     }
-
 
     @NonNull
     @Override

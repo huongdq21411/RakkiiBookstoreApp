@@ -72,21 +72,38 @@
                         app:layout_constraintTop_toTopOf="@id/imvBell"
                         app:srcCompat="@drawable/baseline_circle_24" />
 
-                    <TextView
-                        android:id="@+id/NumNoti"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        app:layout_constraintEnd_toEndOf="@id/imvRedCircle"
-                        app:layout_constraintStart_toStartOf="@id/imvRedCircle"
-                        app:layout_constraintTop_toTopOf="@id/imvRedCircle" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/NumNoti"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="1"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="11sp"-->
+<!--                        app:layout_constraintEnd_toEndOf="@id/imvRedCircle"-->
+<!--                        app:layout_constraintStart_toStartOf="@id/imvRedCircle"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/imvRedCircle" />-->
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <EditText
-                    android:id="@+id/edtSearch"
+<!--                <EditText-->
+<!--                    android:id="@+id/edtSearch"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginStart="24dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginEnd="24dp"-->
+<!--                    android:layout_marginBottom="24dp"-->
+<!--                    android:background="@drawable/edittext_background"-->
+<!--                    android:drawableStart="@drawable/baseline_magnify_24"-->
+<!--                    android:drawablePadding="8dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="Tìm kiếm..."-->
+<!--                    android:inputType="text"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:textColor="#9aa2aa"-->
+<!--                    android:textSize="16sp" />-->
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="24dp"
@@ -97,11 +114,12 @@
                     android:drawableStart="@drawable/baseline_magnify_24"
                     android:drawablePadding="8dp"
                     android:ems="10"
-                    android:hint="Tìm kiếm..."
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#9aa2aa"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:queryHint="Tìm kiếm..."
+                    app:iconifiedByDefault="false"/>
 
             </LinearLayout>
 
