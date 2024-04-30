@@ -7,7 +7,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:background="@drawable/grey_background"
-    android:backgroundTint="#79E6E6E6">
+    android:backgroundTint="@color/bookbackground">
 
     <ImageView
         android:id="@+id/imvProduct"
@@ -50,6 +50,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="3dp"
             android:src="@drawable/baseline_star_24"
+            app:tint="@color/purple_Dark"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTitle" />
 
@@ -96,6 +97,7 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:background="@drawable/rounded_background"
+        android:backgroundTint="@color/purple_Dark"
         android:insetLeft="-2dp"
         android:insetTop="0dp"
         android:insetRight="0dp"

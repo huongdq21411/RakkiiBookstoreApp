@@ -90,7 +90,7 @@
                 style="@android:style/Widget.Button"
                 android:background="@drawable/btn_background"
                 android:text="Lưu"
-                android:textColor="@color/white"
+                android:textColor="@color/unchanged"
                 android:textSize="18sp"
                 app:cornerRadius="20dp"
                 android:layout_marginTop="30dp" />

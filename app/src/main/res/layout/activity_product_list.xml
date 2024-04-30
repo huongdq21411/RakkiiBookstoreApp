@@ -16,7 +16,8 @@
         android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_arrow_back_24" />
+        app:srcCompat="@drawable/baseline_arrow_back_24"
+        app:tint="@color/black"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="120dp">
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Giảm giá 20% cho\nSách Văn Học"
-            android:textColor="@color/white"
+            android:textColor="@color/unchanged"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textAlignment="textEnd"
@@ -50,7 +51,7 @@
             android:layout_marginBottom="12dp"
             android:background="@drawable/purple_background"
             android:text="Mua ngay"
-            android:textColor="@color/white"
+            android:textColor="@color/unchanged"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
