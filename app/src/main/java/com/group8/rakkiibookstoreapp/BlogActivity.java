@@ -16,7 +16,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.group8.rakkiibookstoreapp.adapter.BlogAdapter;
-import com.group8.rakkiibookstoreapp.database.BlogDatabase;
 import com.group8.rakkiibookstoreapp.databinding.ActivityBlogBinding;
 import com.group8.rakkiibookstoreapp.model.Blog;
 

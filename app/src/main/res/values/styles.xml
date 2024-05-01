@@ -3,5 +3,6 @@
     <style name="rounded_corner">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">24dp</item>
+        <item name="fontFamily">@font/opensans</item>
     </style>
 </resources>

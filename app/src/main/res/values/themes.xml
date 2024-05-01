@@ -12,6 +12,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/purple_Dark</item>
+        <item name="fontFamily">@font/opensans</item>
     </style>
 
     <style name="Theme.RakkiiBookstoreApp" parent="Base.Theme.RakkiiBookstoreApp" />
