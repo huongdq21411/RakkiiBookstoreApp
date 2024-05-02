@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- dialog_rounded_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="20dp" /> <!-- adjust the radius as needed -->
+    <solid android:color="#FFFFFF" /> <!-- adjust the background color as needed -->
+    <stroke
+        android:width="2dp"
+    android:color="@color/purple_Dark" />
+</shape>

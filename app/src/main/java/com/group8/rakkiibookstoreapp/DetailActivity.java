@@ -45,17 +45,17 @@ public class DetailActivity extends AppCompatActivity {
 
     private void getBundles() {
         object = (BookList) getIntent().getSerializableExtra("object");
-            int drawableResourceId = this.getResources().getIdentifier(((BookList) object).getPicUrl(), "drawable", this.getPackageName());
-            Glide.with(this)
+        int drawableResourceId = this.getResources().getIdentifier(((BookList) object).getPicUrl(), "drawable", this.getPackageName());
+        Glide.with(this)
 
-                    .load(drawableResourceId)
+                .load(drawableResourceId)
 
-                    .into(binding.imvProduct);
-            binding.txtTitle.setText(((BookList) object).getTitle());
-            NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
-            DecimalFormat decimalFormat = (DecimalFormat)nf;
-            String formattedPrice = decimalFormat.format(((BookList) object).getPrice());
-            binding.txtCategory.setText(((BookList) object).getCategory());
+                .into(binding.imvProduct);
+        binding.txtTitle.setText(((BookList) object).getTitle());
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.GERMAN);
+        DecimalFormat decimalFormat = (DecimalFormat)nf;
+        String formattedPrice = decimalFormat.format(((BookList) object).getPrice());
+        binding.txtCategory.setText(((BookList) object).getCategory());
         binding.txtCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +115,8 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         binding.imvBack.setOnClickListener(v -> finish());
+        binding.txtAuthor.setText(((BookList) object).getAuthor());
+        binding.txtPublisher.setText(((BookList) object).getPublisher());
     }
     private String getCategoryCodeForCategoryText(String categoryText) {
         // Thực hiện logic để ánh xạ từ văn bản thể loại sang mã thể loại tương ứng

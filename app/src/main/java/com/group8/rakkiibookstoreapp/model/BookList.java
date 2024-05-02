@@ -6,6 +6,8 @@ import java.util.Objects;
 public class BookList implements Serializable {
     private int numberInCart;
     private String category;
+    private String author;
+    private String publisher;
     private String title;
     private String picUrl;
     private int review;
@@ -14,9 +16,12 @@ public class BookList implements Serializable {
     private String description;
     private boolean isLiked;
 
-    public BookList(int numberInCart, String category, String title, String picUrl, int review, double score, double price, String description) {
+
+    public BookList(int numberInCart, String category, String author, String publisher, String title, String picUrl, int review, double score, double price, String description) {
         this.numberInCart = numberInCart;
         this.category = category;
+        this.author = author;
+        this.publisher = publisher;
         this.title = title;
         this.picUrl = picUrl;
         this.review = review;
@@ -95,6 +100,22 @@ public class BookList implements Serializable {
 
     public void setLiked(boolean liked) {
         isLiked = liked;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     @Override
