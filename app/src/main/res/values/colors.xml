@@ -12,4 +12,5 @@
     <color name="unliked_d">#000000</color>
     <color name="unchanged">#ffffffff</color>
     <color name="bookbackground">#63E6E6E6</color>
+    <color name="light_blue">#F2F1F6</color>
 </resources>
