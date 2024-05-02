@@ -1,23 +1,31 @@
 package com.group8.rakkiibookstoreapp;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,13 +35,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.group8.rakkiibookstoreapp.databinding.ActivityEditProfileBinding;
 import com.group8.rakkiibookstoreapp.databinding.ActivityLoginBinding;
 
-import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
+    FirebaseAuth auth;
     String nameUser, emailUser, usernameUser, passwordUser;
     DatabaseReference reference;
+    TextView forgotPassword;
     boolean isReady = false;
 
     @Override
@@ -76,6 +85,55 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                View dialogView = getLayoutInflater().inflate(R.layout.forgot_dialog_box, null);
+                EditText emailBox = dialogView.findViewById(R.id.edtEmailBox);
+
+                builder.setView(dialogView);
+                AlertDialog dialog = builder.create();
+
+                dialogView.findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String userEmail = emailBox.getText().toString();
+
+                        if (TextUtils.isEmpty(userEmail) && !Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
+                            Toast.makeText(LoginActivity.this, "Điền địa chỉ Email của bạn", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(LoginActivity.this, "Kiểm tra hộp thư của " +
+                                            "bạn!", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Không thể gửi tới địa chỉ" +
+                                            " Email này!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+                    }
+                });
+                dialogView.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                if (dialog.getWindow() != null) {
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                dialog.show();
+
             }
         });
     }
@@ -125,7 +183,6 @@ public class LoginActivity extends AppCompatActivity {
                         String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
 
                         Intent intent = new Intent(LoginActivity.this, Dashboard.class);
-
 
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("email", emailFromDB);
