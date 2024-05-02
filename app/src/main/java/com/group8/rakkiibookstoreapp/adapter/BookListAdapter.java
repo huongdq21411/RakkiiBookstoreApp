@@ -44,6 +44,11 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.Viewho
         this.items = items;
     }
 
+    public void setFilteredList(ArrayList<BookList> filteredList){
+        this.items = filteredList;
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override

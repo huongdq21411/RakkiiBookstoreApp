@@ -225,6 +225,13 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void dismissSplashScreen() {
