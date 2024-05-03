@@ -59,14 +59,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
-        binding.btnIntroduction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, IntroductionActivity.class);
-                startActivity(intent);
-            }
-        });
-
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
         nightmode = sharedPreferences.getBoolean("nightmode", false);
         if (nightmode) {

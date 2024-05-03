@@ -505,10 +505,11 @@
                     android:layout_weight="0.2"
                     android:orientation="vertical"
                     tools:ignore="UseCompoundDrawables">
+
                     <ImageView
                         android:id="@+id/imgProfile"
-                        android:layout_width="21dp"
-                        android:layout_height="24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:src="@drawable/btn_4" />
 
@@ -517,7 +518,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Hồ sơ"
+                        android:text="Người dùng"
                         android:textAlignment="center"
                         android:textSize="12sp" />
                 </LinearLayout>
