@@ -18,16 +18,14 @@ public class WishList {
     public void addtoWishlist(BookList item) {
         ArrayList<BookList> listpop = getWishList();
         boolean existAlready = false;
-        int n = 0;
         for (int i = 0; i < listpop.size(); i++) {
             if (listpop.get(i).getTitle().equals(item.getTitle())) {
                 existAlready = true;
-                n = i;
                 break;
             }
         }
         if(existAlready){
-            listpop.get(n).setNumberInCart(item.getNumberInCart());
+            Toast.makeText(context, "Sản phẩm đã được thêm vào Yêu thích trước đó", Toast.LENGTH_LONG).show();
         }else{
             listpop.add(item);
         }

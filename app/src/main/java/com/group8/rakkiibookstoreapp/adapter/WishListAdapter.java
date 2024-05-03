@@ -81,6 +81,15 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.Viewho
     public int getItemCount() {
         return items.size();
     }
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
 
     public interface OnDataSetChangedListener {
         void onDataSetChanged(int newCount);
@@ -136,16 +145,12 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.Viewho
             int position = items.indexOf(object);
             if (position != -1) {
                 binding.btnDelete.setOnClickListener(v -> {
-                    ArrayList<BookList> listpop = wishList.getWishList();
-                    if (!listpop.isEmpty()) {
-                        wishList.removefromWishlist(listpop, position);
-                        notifyItemRemoved(position);
-                        int range = listpop.isEmpty() ? 0 : Math.max(1, listpop.size() - position);
-                        notifyItemRangeChanged(position, range);
-
-                        if (onDataSetChangedListener != null) {
-                            onDataSetChangedListener.onDataSetChanged(getItemCount());
-                        }
+                    wishList.removefromWishlist(items, position);
+                    notifyItemRemoved(position);
+                    int range = items.isEmpty() ? 0 : Math.max(1, items.size() - position);
+                    notifyItemRangeChanged(0, items.size());
+                    if (onDataSetChangedListener != null) {
+                        onDataSetChangedListener.onDataSetChanged(getItemCount());
                     }
                 });
             }

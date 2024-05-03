@@ -4,6 +4,7 @@
     <string name="email">Email</string>
     <string name="name">Tên</string>
     <string name="pass">Mật khẩu</string>
+    <string name="themeswitch">Chế độ nền</string>
     <string-array name="address">
         <item>TP. Hồ Chí Minh</item>
         <item>Tp. Hà Nội</item>

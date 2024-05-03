@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/white"/>
+            <size android:height="10dp" android:width="10dp"/>
+            <stroke android:width="3dp" android:color="@color/purple_lavender"/>
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/baseline_nights_stay_24"
+        android:top="12dp"
+        android:bottom="12dp"
+        android:left="12dp"
+        android:right="12dp" />
+</layer-list>
