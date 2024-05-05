@@ -7,18 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
+    <ImageView
+        android:id="@+id/imvBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24"
+        app:tint="@color/black"/>
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/svBooks"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/search_view_background"
+        app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="Tìm kiếm tại đây..."
-        app:iconifiedByDefault="false"/>
+        app:layout_constraintTop_toBottomOf="@+id/imvBack"
+        app:queryHint="Tìm kiếm tại đây..." />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBooks"

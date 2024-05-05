@@ -41,6 +41,11 @@ public class SearchActivity extends AppCompatActivity {
         
         addToList();
         searchFunc();
+        addEvent();
+    }
+
+    private void addEvent() {
+        binding.imvBack.setOnClickListener(v -> finish());
     }
 
     private void searchFunc() {
