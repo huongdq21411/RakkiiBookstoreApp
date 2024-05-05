@@ -261,6 +261,13 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.imvInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, InfoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void dismissSplashScreen() {

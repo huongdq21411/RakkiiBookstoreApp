@@ -30,10 +30,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="20dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imvRedCircle"
-                    app:layout_constraintTop_toBottomOf="@+id/imvRedCircle">
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="20dp">
 
                     <TextView
                         android:id="@+id/txtWelcome"
@@ -59,13 +57,12 @@
                         android:id="@+id/imvBell"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        app:layout_constraintStart_toEndOf="@id/imvSearch"
+                        app:tint="@color/unchanged"
+                        app:layout_constraintEnd_toStartOf="@+id/imvInfo"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_notifications_24"
-                        app:tint="@color/unchanged" />
+                        app:srcCompat="@drawable/baseline_notifications_24"/>
 
                     <ImageView
                         android:id="@+id/imvRedCircle"
@@ -77,16 +74,26 @@
                         app:layout_constraintTop_toTopOf="@id/imvBell"
                         app:srcCompat="@drawable/baseline_circle_24" />
 
-                    <!--                    <TextView-->
-                    <!--                        android:id="@+id/NumNoti"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:text="1"-->
-                    <!--                        android:textColor="@color/white"-->
-                    <!--                        android:textSize="11sp"-->
-                    <!--                        app:layout_constraintEnd_toEndOf="@id/imvRedCircle"-->
-                    <!--                        app:layout_constraintStart_toStartOf="@id/imvRedCircle"-->
-                    <!--                        app:layout_constraintTop_toTopOf="@id/imvRedCircle" />-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/NumNoti"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="1"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="11sp"-->
+<!--                        app:layout_constraintEnd_toEndOf="@id/imvRedCircle"-->
+<!--                        app:layout_constraintStart_toStartOf="@id/imvRedCircle"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/imvRedCircle" />-->
+                    <ImageView
+                        android:id="@+id/imvInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_info_24"
+                        app:tint="@color/unchanged" />
 
                     <ImageView
                         android:id="@+id/imvSearch"
@@ -98,21 +105,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/baseline_search_24"
                         app:tint="@color/unchanged" />
-
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/swthemeSwitch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:padding="0dp"
-                        android:scaleX="0.65"
-                        android:scaleY="0.65"
-                        android:thumb="@drawable/thumb"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/imvRedCircle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:track="@drawable/tracker" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -537,7 +529,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Người dùng"
+                        android:text="Hồ sơ"
                         android:textAlignment="center"
                         android:textSize="12sp" />
                 </LinearLayout>
