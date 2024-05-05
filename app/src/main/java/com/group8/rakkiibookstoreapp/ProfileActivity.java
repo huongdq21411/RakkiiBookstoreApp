@@ -32,9 +32,6 @@ import com.group8.rakkiibookstoreapp.databinding.ActivityProfileBinding;
 public class ProfileActivity extends AppCompatActivity {
 
     ActivityProfileBinding binding;
-    boolean nightmode;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,28 +54,6 @@ public class ProfileActivity extends AppCompatActivity {
                 showLogoutConfirmationDialog();
             }
 
-        });
-
-        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
-        nightmode = sharedPreferences.getBoolean("nightmode", false);
-        if (nightmode) {
-            binding.swthemeSwitch.setChecked(true);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-        binding.swthemeSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (nightmode) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("nightmode", false);
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("nightmode", true);
-                }
-                editor.apply();
-            }
         });
     }
 
@@ -139,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    public void passUserData(){
+    public void passUserData() {
         String userUsername = binding.profileUsername.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
@@ -154,7 +129,7 @@ public class ProfileActivity extends AppCompatActivity {
                     String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
                     String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
-                    Intent intent = new Intent(ProfileActivity.this,  EditProfileActivity.class);
+                    Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
 
                     intent.putExtra("name", nameFromDB);
                     intent.putExtra("email", emailFromDB);
@@ -171,15 +146,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-    }
-    @Override
-    public void recreate() {
-        finish();
-        overridePendingTransition(android.R.anim.fade_in,
-                android.R.anim.fade_out);
-        startActivity(getIntent());
-        overridePendingTransition(android.R.anim.fade_in,
-                android.R.anim.fade_out);
     }
 
 }

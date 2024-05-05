@@ -1,7 +1,9 @@
 package com.group8.rakkiibookstoreapp;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -54,6 +57,9 @@ public class Dashboard extends AppCompatActivity {
     String nameUser, emailUser, usernameUser, passwordUser;
     boolean isReady = false;
     private ArrayList<BookList> items;
+    boolean nightmode;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +89,29 @@ public class Dashboard extends AppCompatActivity {
             }
         });
         showHello();
+
+        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+        nightmode = sharedPreferences.getBoolean("nightmode", false);
+        binding.swthemeSwitch.setChecked(nightmode);
+        if (nightmode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        binding.swthemeSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (nightmode) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
+                editor = sharedPreferences.edit();
+                editor.putBoolean("nightmode", !nightmode);
+                editor.apply();
+                nightmode = !nightmode;
+            }
+        });
     }
 
 
@@ -369,5 +398,14 @@ public class Dashboard extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
+    }
+    @Override
+    public void recreate() {
+        finish();
+        overridePendingTransition(android.R.anim.fade_in,
+                android.R.anim.fade_out);
+        startActivity(getIntent());
+        overridePendingTransition(android.R.anim.fade_in,
+                android.R.anim.fade_out);
     }
 }
