@@ -60,7 +60,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         app:tint="@color/unchanged"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imvInfo"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/baseline_notifications_24"/>
 
@@ -84,6 +84,17 @@
 <!--                        app:layout_constraintEnd_toEndOf="@id/imvRedCircle"-->
 <!--                        app:layout_constraintStart_toStartOf="@id/imvRedCircle"-->
 <!--                        app:layout_constraintTop_toTopOf="@id/imvRedCircle" />-->
+                    <ImageView
+                        android:id="@+id/imvInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_info_24"
+                        app:tint="@color/unchanged" />
+
                     <ImageView
                         android:id="@+id/imvSearch"
                         android:layout_width="wrap_content"
@@ -518,7 +529,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Người dùng"
+                        android:text="Hồ sơ"
                         android:textAlignment="center"
                         android:textSize="12sp" />
                 </LinearLayout>
