@@ -78,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
                         app:layout_constraintStart_toEndOf="@id/imvRedCircle"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/baseline_info_24"
