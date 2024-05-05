@@ -7,4 +7,5 @@
         <item name="android:windowSplashScreenBrandingImage">@drawable/rakiii_branding</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.RakkiiBookstoreApp</item>
     </style>
+
 </resources>

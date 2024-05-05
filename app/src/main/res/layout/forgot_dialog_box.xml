@@ -35,7 +35,7 @@
             android:textSize="16sp"
             android:textColor="@color/purple_Dark"
             app:layout_constraintTop_toBottomOf="@id/forgotTitle"
-            app:layout_constraintBottom_toTopOf="@+id/edtEmail"/>
+            app:layout_constraintBottom_toTopOf="@+id/edtEmailBox"/>
         <EditText
             android:id="@+id/edtEmailBox"
             android:layout_width="300dp"

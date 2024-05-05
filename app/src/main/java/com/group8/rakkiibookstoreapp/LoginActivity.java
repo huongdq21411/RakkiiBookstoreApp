@@ -103,10 +103,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         String userEmail = emailBox.getText().toString();
 
-                        if (TextUtils.isEmpty(userEmail) && !Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
+                        if (TextUtils.isEmpty(userEmail) ||!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
                             Toast.makeText(LoginActivity.this, "Điền địa chỉ Email của bạn", Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        auth = FirebaseAuth.getInstance();
                         auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -120,7 +121,6 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
                     }
                 });
                 dialogView.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
@@ -133,7 +133,6 @@ public class LoginActivity extends AppCompatActivity {
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
                 }
                 dialog.show();
-
             }
         });
     }
