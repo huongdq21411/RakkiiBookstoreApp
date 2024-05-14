@@ -238,10 +238,10 @@ public class Dashboard extends AppCompatActivity {
         });
         binding.Banner.setOnClickListener(v -> {
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
-            intent.putExtra("category", "nocat");
+            intent.putExtra("category", "cat1");
             startActivity(intent);
         });
-        binding.textView3.setOnClickListener(v -> {
+        binding.txtViewAll.setOnClickListener(v -> {
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
             intent.putExtra("category", "nocat");
             startActivity(intent);
