@@ -40,29 +40,19 @@
                         app:srcCompat="@drawable/baseline_arrow_back_24"
                         app:tint="@color/black"/>
 
-                    <ImageView
-                        android:id="@+id/imvBookMark"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd ="16dp"
-                        android:layout_marginTop="16dp"
-                        android:padding="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_bookmark_border_24"
-                        app:tint="@color/black"/>
-
 
                     <ImageView
                         android:id="@+id/imvShare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
+                        android:layout_marginEnd="18dp"
                         android:padding="8dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imvBookMark"
-                        app:layout_constraintEnd_toStartOf="@+id/imvBookMark"
-                        app:layout_constraintTop_toTopOf="@+id/imvBookMark"
+                        app:layout_constraintBottom_toBottomOf="@+id/imvBack"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imvBack"
                         app:srcCompat="@drawable/baseline_share_24"
-                        app:tint="@color/black"/>
+                        app:tint="@color/black" />
 
                     <ImageView
                         android:id="@+id/imvBlog"

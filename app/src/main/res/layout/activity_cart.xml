@@ -67,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,29 +131,54 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textDelivery" />
 
+<!--                <TextView-->
+<!--                    android:id="@+id/textTotalTax"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:text="Tiền thuế"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="16sp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textDelivery" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/txtTotalTax"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:text="-"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="16sp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/textTotalTax"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/textTotalTax" />-->
+
                 <TextView
-                    android:id="@+id/textTotalTax"
+                    android:id="@+id/textVoucher"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Tổng tiền thuế"
+                    android:text="Mã giảm giá"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textDelivery" />
 
-                <TextView
-                    android:id="@+id/txtTotalTax"
+                <EditText
+                    android:id="@+id/edtVoucher"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:text="-"
+                    android:hint="Nhập mã"
                     android:textColor="@color/black"
+                    android:background="@android:color/transparent"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textTotalTax"
+                    app:layout_constraintBottom_toBottomOf="@+id/textVoucher"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textTotalTax" />
+                    app:layout_constraintTop_toTopOf="@+id/textVoucher" />
 
                 <View
                     android:id="@+id/view"
@@ -164,7 +190,7 @@
                     android:background="#ABABAB"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textTotalTax" />
+                    app:layout_constraintTop_toBottomOf="@+id/textVoucher" />
 
                 <TextView
                     android:id="@+id/textTotal"
@@ -177,7 +203,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/textTotalTax"
+                    app:layout_constraintStart_toStartOf="@+id/textDelivery"
                     app:layout_constraintTop_toBottomOf="@+id/view" />
 
                 <TextView
@@ -224,12 +250,54 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imvAddress"
+                    android:id="@+id/imvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="@+id/textYourDeliveryAddress"
                     app:layout_constraintTop_toBottomOf="@+id/textYourDeliveryAddress"
+                    app:srcCompat="@drawable/baseline_account_circle_24"/>
+
+
+                <EditText
+                    android:id="@+id/edtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:hint="Họ tên"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="@+id/imvName"
+                    app:layout_constraintStart_toEndOf="@+id/imvName"
+                    app:layout_constraintTop_toTopOf="@+id/imvName" />
+
+                <ImageView
+                    android:id="@+id/imvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="@+id/imvName"
+                    app:layout_constraintTop_toBottomOf="@+id/imvName"
+                    app:srcCompat="@drawable/baseline_phone_24"/>
+
+
+                <EditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:hint="Số điện thoại"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="@+id/imvPhone"
+                    app:layout_constraintStart_toEndOf="@+id/imvPhone"
+                    app:layout_constraintTop_toTopOf="@+id/imvPhone" />
+
+                <ImageView
+                    android:id="@+id/imvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="@+id/imvPhone"
+                    app:layout_constraintTop_toBottomOf="@+id/imvPhone"
                     app:srcCompat="@drawable/baseline_location_pin_24"/>
 
 
@@ -240,8 +308,47 @@
                     android:spinnerMode="dropdown"
                     app:layout_constraintBottom_toBottomOf="@+id/imvAddress"
                     app:layout_constraintStart_toEndOf="@+id/imvAddress"
-                    app:layout_constraintTop_toTopOf="@+id/imvAddress"/>
+                    app:layout_constraintTop_toTopOf="@+id/imvAddress" />
 
+<!--                <ImageView-->
+<!--                    android:id="@+id/imvPhon"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/imvAddress"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/imvAddress"-->
+<!--                    app:srcCompat="@drawable/baseline_phone_24"/>-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/edtPhon"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:hint="Số điện thoại"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/imvPhon"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/imvPhon"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/imvPhon" />-->
+
+                <ImageView
+                    android:id="@+id/imvAddressDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="@+id/imvAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/imvAddress"
+                    app:srcCompat="@drawable/baseline_home_filled_24"/>
+
+
+                <EditText
+                    android:id="@+id/edtAddressDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:hint="Địa chỉ cụ thể"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="@+id/imvAddressDetail"
+                    app:layout_constraintStart_toEndOf="@+id/imvAddressDetail"
+                    app:layout_constraintTop_toTopOf="@+id/imvAddressDetail" />
 
                 <View
                     android:id="@+id/view2"
@@ -253,7 +360,7 @@
                     android:background="#ABABAB"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spAddress" />
+                    app:layout_constraintTop_toBottomOf="@+id/edtAddressDetail" />
 
                 <TextView
                     android:id="@+id/textPaymentMethod"

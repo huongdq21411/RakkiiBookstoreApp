@@ -135,7 +135,7 @@ public class Dashboard extends AppCompatActivity {
         binding.btnBlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, BlogActivity.class));
+                startActivity(new Intent(Dashboard.this, DiscoverActivity.class));
             }
         });
     }
@@ -238,10 +238,10 @@ public class Dashboard extends AppCompatActivity {
         });
         binding.Banner.setOnClickListener(v -> {
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
-            intent.putExtra("category", "nocat");
+            intent.putExtra("category", "cat1");
             startActivity(intent);
         });
-        binding.textView3.setOnClickListener(v -> {
+        binding.txtViewAll.setOnClickListener(v -> {
             Intent intent = new Intent(Dashboard.this, ProductListActivity.class);
             intent.putExtra("category", "nocat");
             startActivity(intent);

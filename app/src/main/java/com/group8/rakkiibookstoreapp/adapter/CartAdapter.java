@@ -32,7 +32,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
     public CartAdapter(ArrayList<BookList> items, ChangeNumberItemsListener changeNumberItemsListener) {
         this.items = items;
         this.changeNumberItemsListener = changeNumberItemsListener;
-        this.selectedItems = new ArrayList<>();
+//        this.selectedItems = new ArrayList<>();
     }
 
     @NonNull
@@ -96,6 +96,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     public ArrayList<BookList> getSelectedItems() {

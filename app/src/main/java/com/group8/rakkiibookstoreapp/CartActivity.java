@@ -35,15 +35,15 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+//        EdgeToEdge.enable(this);
         binding = ActivityCartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         managmentCart = new ManagmentCart(this);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
 
         managmentCart = new ManagmentCart(this);
         setVariable();
@@ -82,17 +82,20 @@ public class CartActivity extends AppCompatActivity {
                 calculatorCart();
             }
         }));
+
     }
 
     private void calculatorCart() {
-        double percentTax = 0.01;
+//        double percentTax = 0.01;
+        double percentTax = 0;
         double delivery = 10000;
         tax = Math.round(managmentCart.getTotalFee() * percentTax * 100) / 100;
 
-        double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100) / 100;
+//        double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100) / 100;
+        double total = Math.round((managmentCart.getTotalFee() + delivery) * 100) / 100;
         double itemTotal = Math.round(managmentCart.getTotalFee()*100/100);
         binding.txtTotalFee.setText(itemTotal + " đ");
-        binding.txtTotalTax.setText(tax + " đ");
+//        binding.txtTotalTax.setText(tax + " đ");
         binding.txtDelivery.setText(delivery + " đ");
         binding.txtTotal.setText(total + " đ");
     }
@@ -109,7 +112,7 @@ public class CartActivity extends AppCompatActivity {
     private void loadDataAddress() {
 
         address = new ArrayList<>();
-        address.add("Tỉnh/Thành phố");
+        address.add("Chọn Tỉnh/Thành phố");
         address.add("TP. Hồ Chí Minh");
         address.add("Tp. Hà Nội");
         address.add("An Giang");

@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.group8.rakkiibookstoreapp.databinding.ActivityBlogBinding;
 import com.group8.rakkiibookstoreapp.databinding.ActivityBlogDetailBinding;
 import com.group8.rakkiibookstoreapp.model.Blog;
+import com.group8.rakkiibookstoreapp.model.BookList;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,26 @@ public class BlogDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        // Thiết lập sự kiện click cho nút chia sẻ
+        binding.imvShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuẩn bị nội dung để chia sẻ
+                String title = binding.txtBlogTitle.getText().toString();
+                String content = binding.txtBlogTime.getText().toString();
+                String sub = "Xem ngay tại https://webapp.diawi.com/install/HDfyzY";
+                String shareBodyText = title + "\n\n" + content + "\n\n" + sub;
+
+                // Chia sẻ
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, shareBodyText);
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, "Chia sẻ qua:"));
+
             }
         });
 
