@@ -6,395 +6,389 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
-    <ScrollView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/purple_Dark">
+        <ImageView
+            android:id="@+id/imvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_arrow_back_24"
+            app:tint="@color/unchanged"/>
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/rakkii_icon"
+            android:background="@color/unchanged"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/edtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Nguyễn Thị Thanh Trúc"
+            android:textColor="@color/unchanged"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/imgProfile"
+            app:layout_constraintStart_toStartOf="@id/imgProfile"
+            app:layout_constraintTop_toBottomOf="@id/imgProfile"/>
+
+        <TextView
+            android:id="@+id/edtUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="trucxinhdep278"
+            android:textColor="@color/unchanged"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/edtName"
+            app:layout_constraintStart_toStartOf="@id/edtName"
+            app:layout_constraintTop_toBottomOf="@id/edtName"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/white_background"
             android:orientation="vertical"
-            android:gravity="center"
-            android:background="@color/purple_Dark">
-            <ImageView
-                android:id="@+id/imvBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:padding="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_arrow_back_24"
-                app:tint="@color/unchanged"/>
-
-            <ImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="30dp"
-                android:src="@drawable/rakkii_icon"
-                android:background="@color/unchanged"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                android:id="@+id/edtName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Nguyễn Thị Thanh Trúc"
-                android:textColor="@color/unchanged"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@id/imgProfile"
-                app:layout_constraintStart_toStartOf="@id/imgProfile"
-                app:layout_constraintTop_toBottomOf="@id/imgProfile"/>
-
-            <TextView
-                android:id="@+id/edtUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="trucxinhdep278"
-                android:textColor="@color/unchanged"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@id/edtName"
-                app:layout_constraintStart_toStartOf="@id/edtName"
-                app:layout_constraintTop_toBottomOf="@id/edtName"/>
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtUsername">
 
             <LinearLayout
-                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/white_background"
-                android:orientation="vertical"
-                android:padding="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edtUsername">
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/numbBook"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:elevation="5dp"
-                        android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:text="27"
+                        android:textAlignment="center"
+                        android:textColor="@color/purple_Dark"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/numbBook"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="12dp"
-                            android:gravity="center"
-                            android:text="27"
-                            android:textAlignment="center"
-                            android:textColor="@color/purple_Dark"
-                            android:textSize="26sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtBook"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Đã mua"
-                            android:textAlignment="center"
-                            android:textColor="@color/purple_Dark"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtBook"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:elevation="5dp"
-                        android:orientation="vertical"
-                        android:padding="8dp">
-
-                        <TextView
-                            android:id="@+id/numbReview"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="12dp"
-                            android:gravity="center"
-                            android:text="12"
-                            android:textAlignment="center"
-                            android:textColor="@color/purple_Dark"
-                            android:textSize="26sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtReview"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Bình luận"
-                            android:textAlignment="center"
-                            android:textColor="@color/purple_Dark"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:elevation="5dp"
-                        android:orientation="vertical"
-                        android:padding="8dp">
-
-                        <TextView
-                            android:id="@+id/numbRate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="12dp"
-                            android:gravity="center"
-                            android:text="21"
-                            android:textAlignment="center"
-                            android:textColor="@color/purple_Dark"
-                            android:textSize="26sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtRate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Đánh giá"
-                            android:textAlignment="center"
-                            android:textColor="@color/purple_Dark"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
+                        android:text="Đã mua"
+                        android:textAlignment="center"
+                        android:textColor="@color/purple_Dark"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:orientation="vertical"
                     android:padding="8dp">
 
                     <TextView
-                        android:id="@+id/txtName"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/numbReview"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/name"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:text="12"
+                        android:textAlignment="center"
                         android:textColor="@color/purple_Dark"
-                        android:textSize="18sp"
+                        android:textSize="26sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/profileName"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/txtReview"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Nguyễn Thị Thanh Trúc"
-                        android:textAlignment="viewEnd"
-                        android:textColor="@color/grey"
-                        android:textSize="18sp" />
+                        android:text="Bình luận"
+                        android:textAlignment="center"
+                        android:textColor="@color/purple_Dark"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:alpha="0.5"
-                    android:background="@color/purple_Dark" />
-
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:elevation="5dp"
+                    android:orientation="vertical"
                     android:padding="8dp">
 
                     <TextView
-                        android:id="@+id/txtEmail"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/numbRate"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/email"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:text="21"
+                        android:textAlignment="center"
                         android:textColor="@color/purple_Dark"
-                        android:textSize="18sp"
+                        android:textSize="26sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/profileEmail"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/txtRate"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="trucntt21411@st.uel.edu.vn"
-                        android:textAlignment="viewEnd"
-                        android:textColor="@color/grey"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:alpha="0.5"
-                    android:background="@color/purple_Dark" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <TextView
-                        android:id="@+id/txtUsername"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/user_name"
+                        android:text="Đánh giá"
+                        android:textAlignment="center"
                         android:textColor="@color/purple_Dark"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/profileUsername"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="trucxinhdep278"
-                        android:textAlignment="viewEnd"
-                        android:textColor="@color/grey"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:alpha="0.5"
-                    android:background="@color/purple_Dark" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal"
-                    android:padding="8dp">
-
-                    <TextView
-                        android:id="@+id/txtPassword"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/pass"
-                        android:textColor="@color/purple_Dark"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/profilePassword"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="278@Trucxinhdep"
-                        android:textAlignment="viewEnd"
-                        android:textColor="@color/grey"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!--    <androidx.appcompat.widget.AppCompatButton-->
-            <!--        android:id="@+id/btnEditProf"-->
-            <!--        style="@android:style/Widget.Button"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:layout_height="wrap_content"-->
-            <!--        android:layout_margin="20dp"-->
-            <!--        android:layout_marginTop="10dp"-->
-            <!--        android:background="@drawable/btn_background"-->
-            <!--        android:text="Sửa hồ sơ"-->
-            <!--        android:textColor="@color/white"-->
-            <!--        android:textSize="18sp"-->
-            <!--        app:cornerRadius="20dp"-->
-            <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--        app:layout_constraintEnd_toEndOf="@id/linearLayout"-->
-            <!--        app:layout_constraintStart_toStartOf="@id/linearLayout"-->
-            <!--        app:layout_constraintTop_toBottomOf="@id/linearLayout"-->
-            <!--        app:layout_constraintVertical_bias="0.2" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
-            <!--    <androidx.appcompat.widget.AppCompatButton-->
-            <!--        android:id="@+id/btnLogout"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:layout_height="wrap_content"-->
-            <!--        android:layout_marginTop="10dp"-->
-            <!--        android:textColor="@color/white"-->
-            <!--        android:text="Đăng xuất"-->
-            <!--        android:textSize="18sp"-->
-            <!--        app:cornerRadius="20dp"-->
-            <!--        android:layout_margin="24dp"-->
-            <!--        style="@android:style/Widget.Button"-->
-            <!--        android:background="@drawable/btn_background"-->
-            <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--        app:layout_constraintEnd_toEndOf="@id/linearLayout"-->
-            <!--        app:layout_constraintStart_toStartOf="@id/linearLayout"-->
-            <!--        app:layout_constraintTop_toBottomOf="@id/btnEditProf"/>-->
-            <!-- Your existing layout elements -->
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/name"
+                    android:textColor="@color/purple_Dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnEditProf"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:textColor="@color/unchanged"
-                android:text="Sửa hồ sơ"
-                android:textSize="18sp"
-                app:cornerRadius="20dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="12dp"
-                style="@android:style/Widget.Button"
-                android:background="@drawable/btn_background"
-                android:backgroundTint="@color/purple_light"
-                app:layout_constraintEnd_toStartOf="@id/btnLogout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
+                <TextView
+                    android:id="@+id/profileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nguyễn Thị Thanh Trúc"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/grey"
+                    android:textSize="18sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLogout"
-                style="@android:style/Widget.Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/btn_background"
-                android:backgroundTint="@color/purple_light"
-                android:text="Đăng xuất"
-                android:textColor="@color/unchanged"
-                android:textSize="18sp"
-                app:cornerRadius="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btnEditProf"
-                app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+            </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:alpha="0.5"
+                android:background="@color/purple_Dark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/txtEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/email"
+                    android:textColor="@color/purple_Dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profileEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="trucntt21411@st.uel.edu.vn"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/grey"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:alpha="0.5"
+                android:background="@color/purple_Dark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/txtUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/user_name"
+                    android:textColor="@color/purple_Dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profileUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="trucxinhdep278"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/grey"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:alpha="0.5"
+                android:background="@color/purple_Dark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/txtPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/pass"
+                    android:textColor="@color/purple_Dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profilePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="278@Trucxinhdep"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/grey"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--    <androidx.appcompat.widget.AppCompatButton-->
+        <!--        android:id="@+id/btnEditProf"-->
+        <!--        style="@android:style/Widget.Button"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_margin="20dp"-->
+        <!--        android:layout_marginTop="10dp"-->
+        <!--        android:background="@drawable/btn_background"-->
+        <!--        android:text="Sửa hồ sơ"-->
+        <!--        android:textColor="@color/white"-->
+        <!--        android:textSize="18sp"-->
+        <!--        app:cornerRadius="20dp"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="@id/linearLayout"-->
+        <!--        app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/linearLayout"-->
+        <!--        app:layout_constraintVertical_bias="0.2" />-->
+
+        <!--    <androidx.appcompat.widget.AppCompatButton-->
+        <!--        android:id="@+id/btnLogout"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="10dp"-->
+        <!--        android:textColor="@color/white"-->
+        <!--        android:text="Đăng xuất"-->
+        <!--        android:textSize="18sp"-->
+        <!--        app:cornerRadius="20dp"-->
+        <!--        android:layout_margin="24dp"-->
+        <!--        style="@android:style/Widget.Button"-->
+        <!--        android:background="@drawable/btn_background"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="@id/linearLayout"-->
+        <!--        app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/btnEditProf"/>-->
+        <!-- Your existing layout elements -->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEditProf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/unchanged"
+            android:text="Sửa hồ sơ"
+            android:textSize="18sp"
+            app:cornerRadius="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="12dp"
+            style="@android:style/Widget.Button"
+            android:background="@drawable/btn_background"
+            android:backgroundTint="@color/purple_light"
+            app:layout_constraintEnd_toStartOf="@id/btnLogout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogout"
+            style="@android:style/Widget.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/btn_background"
+            android:backgroundTint="@color/purple_light"
+            android:text="Đăng xuất"
+            android:textColor="@color/unchanged"
+            android:textSize="18sp"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnEditProf"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
