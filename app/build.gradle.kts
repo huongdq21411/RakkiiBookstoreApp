@@ -54,7 +54,6 @@ dependencies {
     implementation ("com.google.android.gms:play-services-vision:20.1.3")
     implementation ("com.google.firebase:firebase-auth:18.0.0")
     implementation ("com.google.android.gms:play-services-gcm:17.0.0")
-    implementation ("com.google.android.gms:play-services-auth:21.1.1")
 
 
 }

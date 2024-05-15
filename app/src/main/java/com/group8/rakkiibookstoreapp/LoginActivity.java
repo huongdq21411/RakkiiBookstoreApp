@@ -88,53 +88,53 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-//        binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-//                View dialogView = getLayoutInflater().inflate(R.layout.forgot_dialog_box, null);
-//                EditText emailBox = dialogView.findViewById(R.id.edtEmailBox);
-//
-//                builder.setView(dialogView);
-//                AlertDialog dialog = builder.create();
-//
-//                dialogView.findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        String userEmail = emailBox.getText().toString();
-//
-//                        if (TextUtils.isEmpty(userEmail) ||!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
-//                            Toast.makeText(LoginActivity.this, "Điền địa chỉ Email của bạn", Toast.LENGTH_SHORT).show();
-//                            return;
-//                        }
-//                        auth = FirebaseAuth.getInstance();
-//                        auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                if (task.isSuccessful()){
-//                                    Toast.makeText(LoginActivity.this, "Kiểm tra hộp thư của " +
-//                                            "bạn!", Toast.LENGTH_SHORT).show();
-//                                    dialog.dismiss();
-//                                } else {
-//                                    Toast.makeText(LoginActivity.this, "Không thể gửi tới địa chỉ" +
-//                                            " Email này!", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//                    }
-//                });
-//                dialogView.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//                if (dialog.getWindow() != null) {
-//                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-//                }
-//                dialog.show();
-//            }
-//        });
+        binding.forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                View dialogView = getLayoutInflater().inflate(R.layout.forgot_dialog_box, null);
+                EditText emailBox = dialogView.findViewById(R.id.edtEmailBox);
+
+                builder.setView(dialogView);
+                AlertDialog dialog = builder.create();
+
+                dialogView.findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String userEmail = emailBox.getText().toString();
+
+                        if (TextUtils.isEmpty(userEmail) ||!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
+                            Toast.makeText(LoginActivity.this, "Điền địa chỉ Email của bạn", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        auth = FirebaseAuth.getInstance();
+                        auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(LoginActivity.this, "Kiểm tra hộp thư của " +
+                                            "bạn!", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Không thể gửi tới địa chỉ" +
+                                            " Email này!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                dialogView.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                if (dialog.getWindow() != null) {
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                dialog.show();
+            }
+        });
     }
 
     public Boolean validateUsername() {
