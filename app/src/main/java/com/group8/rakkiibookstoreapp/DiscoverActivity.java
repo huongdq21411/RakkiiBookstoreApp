@@ -71,4 +71,5 @@ public class DiscoverActivity extends AppCompatActivity {
         Window window = DiscoverActivity.this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(DiscoverActivity.this, R.color.purple_Dark));
     }
+
 }

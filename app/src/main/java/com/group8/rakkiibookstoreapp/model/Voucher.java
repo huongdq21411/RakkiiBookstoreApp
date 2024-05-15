@@ -64,4 +64,5 @@ public class Voucher {
     public void setVoucherTime(String voucherTime) {
         this.voucherTime = voucherTime;
     }
+
 }

@@ -145,4 +145,5 @@ public class CartActivity extends AppCompatActivity {
 
         binding.spPayment.setAdapter(adapter);
     }
+
 }

@@ -95,5 +95,4 @@ public class BlogActivity extends AppCompatActivity {
         Window window = BlogActivity.this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(BlogActivity.this, R.color.purple_Dark));
     }
-
 }

@@ -96,4 +96,5 @@ public class CartListActivity extends AppCompatActivity {
             }
         });
     }
+
 }

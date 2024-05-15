@@ -69,5 +69,6 @@ public class BlogAdapter extends BaseAdapter {
 
         return convertView;
     }
+
 }
 

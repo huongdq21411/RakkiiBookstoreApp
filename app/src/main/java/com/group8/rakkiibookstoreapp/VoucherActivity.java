@@ -78,5 +78,4 @@ public class VoucherActivity extends AppCompatActivity {
         Window window = VoucherActivity.this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(VoucherActivity.this, R.color.purple_Dark));
     }
-
 }

@@ -150,7 +150,6 @@
                     android:textSize="16dp"
                     android:textColor="@color/black"/>
 
-
             </LinearLayout>
 
         </ScrollView>

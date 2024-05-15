@@ -394,7 +394,6 @@ public class Dashboard extends AppCompatActivity {
     }
 
 
-
     // Hàm kiểm tra xem chuỗi có phải là một đường dẫn URL hay không
     private boolean isURL(String text) {
         return text != null && (text.startsWith("http://") || text.startsWith("https://"));

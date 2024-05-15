@@ -60,4 +60,5 @@ public class VoucherAdapter extends BaseAdapter {
 
         return convertView;
     }
+
 }
