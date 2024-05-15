@@ -1,12 +1,13 @@
 package com.group8.rakkiibookstoreapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.firebase.database.core.view.View;
 import com.group8.rakkiibookstoreapp.adapter.BookListAdapter;
 import com.group8.rakkiibookstoreapp.databinding.ActivityProductListBinding;
 import com.group8.rakkiibookstoreapp.model.BookList;
@@ -36,7 +37,15 @@ public class ProductListActivity extends AppCompatActivity {
         if (cat != null) {
             createList(cat);
         }
-
+        binding.btnBuyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductListActivity.this, ProductListActivity.class);
+                intent.putExtra("category", "cat1");
+                startActivity(intent);
+                finish();
+            }
+        });
         binding.imvBack.setOnClickListener(v -> finish());
 
     }
