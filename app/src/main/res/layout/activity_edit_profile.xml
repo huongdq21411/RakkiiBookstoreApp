@@ -79,7 +79,7 @@
                 app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:id="@+id/login_password"
+                    android:id="@+id/edt_password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/purple_border"
